@@ -54,5 +54,29 @@ feature "User edits recipe" do
       expect(page).to have_content "This is the edited description"
       expect(page).not_to have_content "Recipe for cookie soup"
     end
+
+    scenario "I get an error when I change the Title to nothing" do
+      visit edit_recipe_path(recipe)
+      fill_in "Title", with: ""
+      click_button "Save Recipe"
+
+      expect(page).to have_content "Title can't be blank"
+    end
+
+    scenario "I get an error when I change the instructions to nothing" do
+      visit edit_recipe_path(recipe)
+      fill_in "Instructions", with: ""
+      click_button "Save Recipe"
+
+      expect(page).to have_content "Instructions can't be blank"
+    end
+
+    scenario "I get an error when I change the ingredients to nothing" do
+      visit edit_recipe_path(recipe)
+      fill_in "Ingredients", with: ""
+      click_button "Save Recipe"
+
+      expect(page).to have_content "Ingredients can't be blank"
+    end
   end
 end
