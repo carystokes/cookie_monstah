@@ -5,5 +5,4 @@ FactoryGirl.define do
     title "Simple Recipe"
     description "Recipe for cookie soup"
   end
-
 end
