@@ -6,6 +6,5 @@ FactoryGirl.define do
     instructions "1. combine the ingredients 2. eat soup"
     title "Simple Recipe"
     description "Recipe for cookie soup"
-    user_id 1
   end
 end
