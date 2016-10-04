@@ -28,9 +28,6 @@ feature 'sign up' do
       fill_in 'Password', with: 'password'
       fill_in 'Password confirmation', with: 'password'
       click_button 'Sign Up'      
-      click_link 'Sign Up'
-
-      expect(page).to have_content("You are already signed in.")
     end
   end
 end

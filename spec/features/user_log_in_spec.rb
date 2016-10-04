@@ -12,9 +12,6 @@ feature 'log in' do
 
       click_button 'Log in'
       expect(page).to have_content("Signed in successfully.")
-
-      click_link 'Log In'
-      expect(page).to have_content('You are already signed in.')
     end
   end
 end
