@@ -7,9 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1>Cookie Monster's Recipes</h1>
+    <h3>Menu</h3>
+  </header>
 
-  <h1>Cookie Monster's Recipes</h1>
-  <h3>Menu</h3>
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
 
 <%= yield %>
 
