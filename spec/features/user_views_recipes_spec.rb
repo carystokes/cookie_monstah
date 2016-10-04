@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User views recipes" do
+feature "User views recipes" do
   let!(:recipe) { FactoryGirl.create(:recipe) }
   let!(:recipe2) { FactoryGirl.create(:recipe, title: "Another Recipe") }
 

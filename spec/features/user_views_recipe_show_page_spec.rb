@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User views recipes on show page" do
+feature "User views recipes on show page" do
   context "As a user" do
     scenario "I can see the recipe title on the recipe show page" do
     end

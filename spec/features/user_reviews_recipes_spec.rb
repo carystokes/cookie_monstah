@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User writes a review" do
+feature "User writes a review" do
   context "As a user" do
     scenario "I must navigate to the Recipe show page to create a review" do
     end
