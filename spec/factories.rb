@@ -6,10 +6,4 @@ FactoryGirl.define do
     description "Recipe for cookie soup"
   end
 
-  factory :review do
-    rating 3
-    body "soup is not a cookie but it was delicious"
-
-    recipe
-  end
 end

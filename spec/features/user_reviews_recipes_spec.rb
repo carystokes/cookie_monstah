@@ -2,10 +2,15 @@ require 'rails_helper'
 
 feature "User writes a review" do
   let!(:recipe) {FactoryGirl.create(:recipe)}
+  # let!(:review) {FactoryGirl.create(:review)}
   context "As a user" do
 
     scenario "I can see reviews on the Recipe show page" do
-      review = FactoryGirl.create(:review)
+      review = Review.create(
+        rating: 3,
+        body: "soup is not a cookie but it was delicious",
+        recipe: recipe
+      )
       visit recipe_path(recipe)
 
       expect(page).to have_content(review.rating)
@@ -17,16 +22,16 @@ feature "User writes a review" do
 
       expect(page).to have_content "No one has reviewed this yet."
     end
-
-    scenario "I can create a review on the Recipe show page" do
-      visit recipe_path(recipe)
-      fill_in "Rating" with 4
-      fill_in "Body" with "I really like soup"
-
-      expect(page).to have_content "Review created successfully"
-      expect(page).to have_content "Rating: 4"
-      expect(page).to have_content "I really like soup"
-    end
+    #
+    # scenario "I can create a review on the Recipe show page" do
+    #   visit recipe_path(recipe)
+    #   fill_in "Rating", with: 4
+    #   fill_in "Body", with: "I really like soup"
+    #
+    #   expect(page).to have_content "Review created successfully"
+    #   expect(page).to have_content "Rating: 4"
+    #   expect(page).to have_content "I really like soup"
+    # end
 
     # scenario "I must be signed in to create a review" do
     # end

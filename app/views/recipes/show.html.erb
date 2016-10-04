@@ -4,5 +4,16 @@
 <%= @recipe.ingredients %>
 <%= @recipe.instructions %>
 
+<h2>Reviews:</h2>
+
+<% if @reviews.empty? %>
+No one has reviewed this yet.
+<% end %>
+
+<% @reviews.each do |r| %>
+  <%= r.rating %>
+  <%= r.body %>
+<% end %>
+
 <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
 <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
