@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-feature "User creates recipe" do
+RSpec.feature "User creates recipe" do
   context "As a user" do
     scenario "I can navigate to a page to create a new recipe" do
     end

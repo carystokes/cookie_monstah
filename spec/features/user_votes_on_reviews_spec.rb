@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-feature "User votes on reviews" do
+RSpec.feature "User votes on reviews" do
   context "As a user" do
     scenario "I can upvote a review" do
     end
