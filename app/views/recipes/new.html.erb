@@ -1,13 +1,3 @@
 <h1>New Recipe Form</h1>
 
-<%= form_for @recipe do |f| %>
-  <%= f.text_area :title, placeholder: "Title" %>
-  <br>
-  <%= f.text_area :ingredients, placeholder: "Ingredients" %>
-  <br>
-  <%= f.text_area :instructions, placeholder: "Instructions"%>
-  <br>
-  <%= f.text_area :description, placeholder: "Description" %>
-  <br>
-  <%= f.submit "Save Recipe" %>
-<% end %>
+<%= render "form" %>
