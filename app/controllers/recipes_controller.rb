@@ -15,9 +15,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      redirect_to @recipe, notice: "Recipe added successfully"
+      flash[:notice] = "Recipe added successfully"
+      redirect_to @recipe
     else
-      @errors = @recipe.errors.full_messages.join(', ')
+      flash[:notice] = @recipe.errors.full_messages.join(', ')
       render action: 'new'
     end
   end

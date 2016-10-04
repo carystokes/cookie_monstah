@@ -16,12 +16,13 @@ feature "User creates recipe" do
     # scenario "I must be signed in to create a new recipe" do
     # end
 
-    scenario "I must provide a title, ingredients, and instructions (but not necessarily a description) to create the recipe" do
+    scenario "I must provide a title, ingredients, and instructions to create the recipe" do
       visit new_recipe_path
       fill_in "Title", with: "Title"
       fill_in "Ingredients", with: "These are the ingredients"
       fill_in "Instructions", with: "These are the instructions"
-      click_button "Add Recipe"
+      fill_in "Description", with: "This is the description"
+      click_button "Save Recipe"
 
       expect(page).to have_content "Recipe added successfully"
       expect(page).to have_content "Title"
@@ -32,27 +33,47 @@ feature "User creates recipe" do
 
     scenario "I expect an error if I don't provide a title" do
       visit new_recipe_path
+      fill_in "Ingredients", with: "These are the ingredients"
+      fill_in "Instructions", with: "These are the instructions"
+      click_button "Save Recipe"
+
+      expect(page).to have_content("Title can't be blank")
 
     end
 
     scenario "I expect an error if I don't provide ingredients" do
       visit new_recipe_path
+      fill_in "Title", with: "Title"
+      fill_in "Instructions", with: "These are the instructions"
+      click_button "Save Recipe"
 
+      expect(page).to have_content("Ingredients can't be blank")
     end
 
     scenario "I expect an error if I don't provide instructions" do
       visit new_recipe_path
+      fill_in "Title", with: "Title"
+      fill_in "Ingredients", with: "These are the ingredients"
+      fill_in "Description", with: "This is the description"
+      click_button "Save Recipe"
 
+      expect(page).to have_content("Instructions can't be blank")
     end
 
-    scenario "I can optionally provide a description" do
+    scenario "I don't get an error message if I don't provide a description" do
       visit new_recipe_path
+      fill_in "Title", with: "Title"
+      fill_in "Ingredients", with: "These are the ingredients"
+      fill_in "Instructions", with: "These are the instructions"
+      click_button "Save Recipe"
 
+      expect(page).not_to have_content("Description can't be blank")
+      expect(page).to have_content("Recipe added successfully")
     end
 
-    scenario "I can optionally check category boxes that align with allergens" do
-      visit new_recipe_path
-
-    end
+    # scenario "I can optionally check category boxes that align with allergens" do
+    #   visit new_recipe_path
+    #
+    # end
   end
 end
