@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 feature 'sign up' do
   context 'as a user' do
@@ -11,7 +10,7 @@ feature 'sign up' do
       fill_in 'Password', with: 'password'
       fill_in 'Password confirmation', with: 'password'
       click_button 'Sign Up'
-      expect(page).to have_content("Welcome! You have signed up successfully.")
+      expect(page).to have_content('Welcome! You have signed up successfully.')
     end
 
     scenario 'user provides invalid information for registration' do
@@ -27,10 +26,10 @@ feature 'sign up' do
       fill_in 'Email', with: 'user@example.com'
       fill_in 'Password', with: 'password'
       fill_in 'Password confirmation', with: 'password'
-      click_button 'Sign Up'      
+      click_button 'Sign Up'
       click_link 'Sign Up'
 
-      expect(page).to have_content("You are already signed in.")
+      expect(page).to have_content('You are already signed in.')
     end
   end
 end
