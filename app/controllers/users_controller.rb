@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      flash[:notice] = "User edited successfully"
+      flash[:notice] = 'User edited successfully'
       redirect_to @user
     else
       flash[:notice] = @user.errors.full_messages.join(', ')

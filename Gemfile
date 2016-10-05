@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'pg_search'
 group :development, :test do
+  gem 'rubocop'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'

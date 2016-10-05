@@ -3,10 +3,8 @@ require 'rails_helper'
 feature 'search' do
   let!(:recipe) { FactoryGirl.create(:recipe) }
   let!(:recipe2) { FactoryGirl.create(:recipe, title: 'Spider Donuts') }
-  let!(:recipe3) { FactoryGirl.create(:recipe,
-    title: 'Creepy Cookies',
-    ingredients: 'Some spiders, and some cookies'
-    ) }
+  let!(:recipe3) { FactoryGirl.create(:recipe, title: 'Creepy Cookies', ingredients: 'Some spiders, and some cookies') }
+
   context 'as a user' do
     scenario 'user sees a search bar' do
       visit root_path
