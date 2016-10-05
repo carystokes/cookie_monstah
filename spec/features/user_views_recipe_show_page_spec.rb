@@ -11,10 +11,6 @@ feature 'User views recipes on show page' do
       expect(page).to have_content(recipe.title)
     end
 
-    # scenario 'I can see the creator of the recipe on the recipe show page' do
-    #
-    # end
-
     scenario 'I can see a description on the recipe show page' do
       visit recipe_path(recipe)
 
@@ -38,17 +34,5 @@ feature 'User views recipes on show page' do
 
       expect(page).to have_content(recipe.instructions)
     end
-
-    # scenario 'I can see reviews on the recipe show page' do
-    #   visit recipe_path(recipe)
-    # end
-    #
-    # scenario 'I can see who posted the review' do
-    #   visit recipe_path(recipe)
-    # end
-    #
-    # scenario 'I can see the rating that goes with the review' do
-    #   visit recipe_path(recipe)
-    # end
   end
 end
