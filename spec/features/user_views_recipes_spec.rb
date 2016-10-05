@@ -8,7 +8,6 @@ feature 'User views recipes' do
     scenario 'when I go to the root path, I see a list of recipes' do
       visit '/'
 
-
       expect(page).to have_content(recipe.title)
       expect(page).to have_content(recipe2.title)
     end

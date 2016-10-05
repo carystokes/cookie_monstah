@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 feature 'User edits recipe' do
+  let!(:user) {FactoryGirl.create(:user) }
   let!(:recipe) { FactoryGirl.create(:recipe) }
-  context 'As a user' do
+  context 'As an authenicated user' do
     scenario 'I can navigate to an edit page from the show page' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit recipe_path(recipe)
       click_link 'Edit Recipe'
 
@@ -11,6 +16,10 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the title' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit edit_recipe_path(recipe)
       fill_in 'Title', with: 'This is the edited title'
       click_button 'Save Recipe'
@@ -22,6 +31,10 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the instructions' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit edit_recipe_path(recipe)
       fill_in 'Instructions', with: 'These are the edited instructions'
       click_button 'Save Recipe'
@@ -34,6 +47,10 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the ingredients' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit edit_recipe_path(recipe)
       fill_in 'Ingredients', with: 'These are the edited ingredients'
       click_button 'Save Recipe'
@@ -45,6 +62,10 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the description' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit edit_recipe_path(recipe)
       fill_in 'Description', with: 'This is the edited description'
       click_button 'Save Recipe'
@@ -56,6 +77,10 @@ feature 'User edits recipe' do
     end
 
     scenario 'I get an error when I change the Title to nothing' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit edit_recipe_path(recipe)
       fill_in 'Title', with: ''
       click_button 'Save Recipe'
@@ -64,6 +89,10 @@ feature 'User edits recipe' do
     end
 
     scenario 'I get an error when I change the instructions to nothing' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit edit_recipe_path(recipe)
       fill_in 'Instructions', with: ''
       click_button 'Save Recipe'
@@ -72,6 +101,10 @@ feature 'User edits recipe' do
     end
 
     scenario 'I get an error when I change the ingredients to nothing' do
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
       visit edit_recipe_path(recipe)
       fill_in 'Ingredients', with: ''
       click_button 'Save Recipe'
