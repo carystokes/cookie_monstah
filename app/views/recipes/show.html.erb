@@ -1,0 +1,29 @@
+<%= @recipe.title %>
+
+<%= @recipe.description %>
+<%= @recipe.ingredients %>
+<%= @recipe.instructions %>
+
+<h2>Reviews:</h2>
+
+<% if @reviews.empty? %>
+No one has reviewed this yet.
+<% end %>
+
+<% @reviews.each do |r| %>
+  Rating: <%= r.rating %>
+  <%= r.body %>
+<% end %>
+
+<h3>Add a Review!</h3>
+<%= form_for [@recipe, @review] do |f| %>
+<%= f.label :rating %>
+<%= f.text_field :rating %>
+
+<%= f.label :body %>
+<%= f.text_area :body %>
+<%= f.submit "Add a Review" %>
+<% end %>
+
+<%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+<%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
