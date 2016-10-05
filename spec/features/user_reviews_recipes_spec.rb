@@ -34,9 +34,6 @@ feature 'User writes a review' do
       expect(page).to have_content 'I really like soup'
     end
 
-    # scenario 'I must be signed in to create a review' do
-    # end
-
     scenario 'I must have a rating to create a review and optionally\
      a description' do
       visit recipe_path(recipe)

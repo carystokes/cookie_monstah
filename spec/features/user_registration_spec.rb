@@ -22,13 +22,15 @@ feature 'sign up' do
     end
 
     scenario 'user already logged in' do
-      visit new_user_registration_path
-      fill_in 'First name', with: 'Jon'
-      fill_in 'Last name', with: 'Smith'
-      fill_in 'Email', with: 'user@example.com'
+      jon = FactoryGirl.create(:user)
+
+      visit new_user_session_path
+      fill_in 'Email', with: jon.email
       fill_in 'Password', with: 'password'
-      fill_in 'Password confirmation', with: 'password'
-      click_button 'Sign Up'
+      click_button 'Log in'
+      visit new_user_registration_path
+
+      expect(page).to have_content('You are already signed in.')
     end
   end
 end
