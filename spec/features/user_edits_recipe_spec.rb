@@ -29,8 +29,8 @@ feature 'User edits recipe' do
       expect(page).to have_content 'Recipe edited successfully'
       expect(current_path).to eq(recipe_path(recipe))
       expect(page).to have_content 'These are the edited instructions'
-      expect(page).not_to have_content '1. combine the ingredients 2. eat soup'
-
+      expect(page).not_to have_content '1. combine the ingredients \
+      2. eat soup'
     end
 
     scenario 'I can edit the ingredients' do

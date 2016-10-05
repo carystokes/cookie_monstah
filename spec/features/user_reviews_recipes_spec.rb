@@ -1,10 +1,9 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 feature 'User writes a review' do
-  let!(:recipe) {FactoryGirl.create(:recipe)}
-  # let!(:review) {FactoryGirl.create(:review)}
+  let!(:recipe) { FactoryGirl.create(:recipe) }
   context 'As a user' do
-
     scenario 'I can see reviews on the Recipe show page' do
       review = Review.create(
         rating: 3,
@@ -38,7 +37,8 @@ feature 'User writes a review' do
     # scenario 'I must be signed in to create a review' do
     # end
 
-    scenario 'I must have a rating to create a review and optionally a description' do
+    scenario 'I must have a rating to create a review and optionally\
+     a description' do
       visit recipe_path(recipe)
 
       fill_in 'Rating', with: 4
@@ -49,7 +49,8 @@ feature 'User writes a review' do
       expect(page).to have_content 'Rating: 4'
     end
 
-    scenario 'I expect an error if I put a rating that is not between 1 and 5' do
+    scenario 'I expect an error if I put a rating that is not between\
+     1 and 5' do
       visit recipe_path(recipe)
 
       fill_in 'Rating', with: 27
@@ -73,7 +74,8 @@ feature 'User writes a review' do
     scenario 'I expect an error if I don\'t provide a rating' do
       visit recipe_path(recipe)
 
-      fill_in 'Body', with: 'I don\'t like numbers I\'d rather just use my words.'
+      fill_in 'Body', with: 'I don\'t like numbers I\'d rather\
+       just use my words.'
 
       click_button 'Add a Review'
 
