@@ -17,15 +17,14 @@
       <%= link_to "Log In", new_user_session_path %>
     <% end %>
 
-    <%= form_tag(recipes_path, :method => "get", id: "search") do %>
+    <%= form_tag(recipes_path, method: "get", id: "search") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "Search", name: nil %>
     <% end %>
   </header>
   <% flash.each do |key, value| %>
     <%= value %>
   <% end %>
 <%= yield %>
-
 </body>
 </html>

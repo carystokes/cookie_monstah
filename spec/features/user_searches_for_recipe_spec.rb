@@ -10,14 +10,13 @@ feature 'search' do
   context 'as a user' do
     scenario 'user sees a search bar' do
       visit root_path
-
-      expect(page).to have_content("Search")
+      page.should have_selector(:link_or_button, 'Search')
     end
 
     scenario 'user searches for a recipe by name' do
       visit root_path
 
-      fill_in 'Search', with: 'spider'
+      fill_in 'search', with: 'spider'
       click_button 'Search'
       expect(page).to have_content('Spider Donuts')
       expect(page).to have_content('Creepy Cookies')

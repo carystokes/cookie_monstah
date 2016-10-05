@@ -7,6 +7,12 @@ class Recipe < ActiveRecord::Base
   validates :instructions, presence: true
 
   def self.search(search)
-    where("title LIKE ? OR ingredients LIKE ? OR instructions LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+    if search
+      where("title ILIKE ?", "%#{search}%")
+      where("ingredients ILIKE ?", "%#{search}%")
+      where("instructions ILIKE ?", "%#{search}%")
+    else
+      find(:all)
+    end
   end
 end
