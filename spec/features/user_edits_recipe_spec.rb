@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 feature 'User edits recipe' do
-  let!(:recipe) { FactoryGirl.create(:recipe) }
-  context 'As a user' do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:recipe) { FactoryGirl.create(:recipe, user: user) }
+  context 'As an authenicated user' do
     scenario 'I can navigate to an edit page from the show page' do
+      user_sign_in(user)
       visit recipe_path(recipe)
       click_link 'Edit Recipe'
 
@@ -11,6 +13,7 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the title' do
+      user_sign_in(user)
       visit edit_recipe_path(recipe)
       fill_in 'Title', with: 'This is the edited title'
       click_button 'Save Recipe'
@@ -22,6 +25,7 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the instructions' do
+      user_sign_in(user)
       visit edit_recipe_path(recipe)
       fill_in 'Instructions', with: 'These are the edited instructions'
       click_button 'Save Recipe'
@@ -34,6 +38,7 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the ingredients' do
+      user_sign_in(user)
       visit edit_recipe_path(recipe)
       fill_in 'Ingredients', with: 'These are the edited ingredients'
       click_button 'Save Recipe'
@@ -45,6 +50,7 @@ feature 'User edits recipe' do
     end
 
     scenario 'I can edit the description' do
+      user_sign_in(user)
       visit edit_recipe_path(recipe)
       fill_in 'Description', with: 'This is the edited description'
       click_button 'Save Recipe'
@@ -56,6 +62,7 @@ feature 'User edits recipe' do
     end
 
     scenario 'I get an error when I change the Title to nothing' do
+      user_sign_in(user)
       visit edit_recipe_path(recipe)
       fill_in 'Title', with: ''
       click_button 'Save Recipe'
@@ -64,6 +71,7 @@ feature 'User edits recipe' do
     end
 
     scenario 'I get an error when I change the instructions to nothing' do
+      user_sign_in(user)
       visit edit_recipe_path(recipe)
       fill_in 'Instructions', with: ''
       click_button 'Save Recipe'
@@ -72,6 +80,7 @@ feature 'User edits recipe' do
     end
 
     scenario 'I get an error when I change the ingredients to nothing' do
+      user_sign_in(user)
       visit edit_recipe_path(recipe)
       fill_in 'Ingredients', with: ''
       click_button 'Save Recipe'
