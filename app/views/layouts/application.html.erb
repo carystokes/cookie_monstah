@@ -17,6 +17,10 @@
       <%= link_to "Log In", new_user_session_path %>
     <% end %>
   </header>
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
