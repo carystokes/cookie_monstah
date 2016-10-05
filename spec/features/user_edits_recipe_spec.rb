@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User edits recipe' do
-  let!(:user) {FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
   let!(:recipe) { FactoryGirl.create(:recipe, user: user) }
   context 'As an authenicated user' do
     scenario 'I can navigate to an edit page from the show page' do

@@ -7,14 +7,14 @@ class ReviewsController < ApplicationController
 
     if user_signed_in?
       if @review.save
-        flash[:notice] = "Review created successfully"
+        flash[:notice] = 'Review created successfully'
         redirect_to recipe_path(@recipe)
       else
-        flash[:notice] = @review.errors.full_messages.join(", ")
+        flash[:notice] = @review.errors.full_messages.join(', ')
         redirect_to recipe_path(@recipe)
       end
     else
-      flash[:notice] = "Please sign in"
+      flash[:notice] = 'Please sign in'
       redirect_to new_user_session_path
     end
   end

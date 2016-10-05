@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User creates recipe' do
-  let!(:user) {FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
   context 'As an authenticated user' do
     scenario 'I can navigate to a page to create a new recipe' do
       visit root_path
