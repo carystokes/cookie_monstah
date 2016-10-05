@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 feature 'User creates recipe' do
-  let!(:user_id) { 5 }
-  context 'As a user' do
+  let!(:user) {FactoryGirl.create(:user) }
+  context 'As an authenticated user' do
     scenario 'I can navigate to a page to create a new recipe' do
       visit root_path
+      user_sign_in(user)
 
       click_link 'Add a Recipe'
 
@@ -12,6 +13,7 @@ feature 'User creates recipe' do
     end
 
     scenario 'I must provide a title, ingredients, and instructions to create the recipe' do
+      user_sign_in(user)
       visit new_recipe_path
       fill_in 'Title', with: 'Title'
       fill_in 'Ingredients', with: 'These are the ingredients'
@@ -27,6 +29,7 @@ feature 'User creates recipe' do
     end
 
     scenario 'I expect an error if I don\'t provide a title' do
+      user_sign_in(user)
       visit new_recipe_path
       fill_in 'Ingredients', with: 'These are the ingredients'
       fill_in 'Instructions', with: 'These are the instructions'
@@ -37,6 +40,7 @@ feature 'User creates recipe' do
     end
 
     scenario 'I expect an error if I don\'t provide ingredients' do
+      user_sign_in(user)
       visit new_recipe_path
       fill_in 'Title', with: 'Title'
       fill_in 'Instructions', with: 'These are the instructions'
@@ -46,6 +50,7 @@ feature 'User creates recipe' do
     end
 
     scenario 'I expect an error if I don\'t provide instructions' do
+      user_sign_in(user)
       visit new_recipe_path
       fill_in 'Title', with: 'Title'
       fill_in 'Ingredients', with: 'These are the ingredients'
@@ -56,6 +61,7 @@ feature 'User creates recipe' do
     end
 
     scenario 'I don\'t get an error message if I don\'t provide a description' do
+      user_sign_in(user)
       visit new_recipe_path
       fill_in 'Title', with: 'Title'
       fill_in 'Ingredients', with: 'These are the ingredients'

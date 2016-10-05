@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 feature 'User views recipes on show page' do
-  let!(:recipe) { FactoryGirl.create(:recipe) }
-  let!(:recipe2) { FactoryGirl.create(:recipe, description: nil) }
+  let!(:user) {FactoryGirl.create(:user) }
+  let!(:recipe) { FactoryGirl.create(:recipe, user: user) }
+  let!(:recipe2) { FactoryGirl.create(:recipe, description: nil, user: user) }
 
   context 'As a user' do
     scenario 'I can see the recipe title on the recipe show page' do

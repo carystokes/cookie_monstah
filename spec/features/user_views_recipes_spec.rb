@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 feature 'User views recipes' do
-  let!(:recipe) { FactoryGirl.create(:recipe) }
-  let!(:recipe2) { FactoryGirl.create(:recipe, title: 'Another Recipe') }
+  let!(:user) {FactoryGirl.create(:user) }
+  let!(:recipe) { FactoryGirl.create(:recipe, user: user) }
+  let!(:recipe2) { FactoryGirl.create(:recipe, title: 'Another Recipe', user: user) }
 
   context 'As a user' do
     scenario 'when I go to the root path, I see a list of recipes' do
