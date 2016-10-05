@@ -16,4 +16,12 @@ FactoryGirl.define do
 
     user
   end
+
+  factory :review do
+    rating 5
+    body 'I LOVE COOKIE SOUP!!!'
+
+    recipe
+    user
+  end
 end

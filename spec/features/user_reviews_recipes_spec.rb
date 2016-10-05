@@ -7,7 +7,6 @@ feature 'User writes a review' do
   let!(:recipe) { FactoryGirl.create(:recipe) }
   context 'As a user' do
     scenario 'I can see reviews on the Recipe show page' do
-      user_sign_in(user2)
       review = Review.create(
         rating: 3,
         body: 'soup is not a cookie but it was delicious',
