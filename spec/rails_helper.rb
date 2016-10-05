@@ -1,13 +1,14 @@
+# frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
 require 'factory_girl_rails'
-require "capybara/rails"
-require "valid_attribute"
+require 'capybara/rails'
+require 'valid_attribute'
 require 'support/factory_girl'
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -20,7 +21,6 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
-
 end
 
 RSpec.configure do |config|
@@ -55,9 +55,10 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     # :rack_test driver's Rack app under test shares database connection
     # with the specs, so continue to use transaction strategy for speed.
-    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+    driver_shares_db_connection_with_specs = \
+    Capybara.current_driver == :rack_test
 
-    if !driver_shares_db_connection_with_specs
+    unless driver_shares_db_connection_with_specs
       # Driver is probably for an external browser with an app
       # under test that does *not* share a database connection with the
       # specs, so use truncation strategy.

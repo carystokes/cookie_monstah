@@ -14,7 +14,6 @@ feature 'User views recipes' do
     end
 
     scenario 'I can see a list of the recipes being reviewed' do
-
       visit recipes_path
 
       expect(page).to have_content(recipe.title)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'User votes on reviews' do
@@ -14,10 +16,12 @@ feature 'User votes on reviews' do
     scenario 'I can change my downvote to an upvote' do
     end
 
-    scenario 'if I try to click up when I\'ve already upvoted, nothing happens' do
+    scenario 'if I try to click up when I\'ve already upvoted, \
+    nothing happens' do
     end
 
-    scenario 'if I try to click down when I\'ve already downvoted, nothing happens' do
+    scenario 'if I try to click down when I\'ve already downvoted,\
+     nothing happens' do
     end
   end
 end
