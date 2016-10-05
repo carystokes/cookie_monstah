@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 feature 'sign up' do
@@ -16,7 +17,7 @@ feature 'sign up' do
     scenario 'user provides invalid information for registration' do
       visit new_user_registration_path
       click_button 'Sign Up'
-      expect(page).to have_content("First name can't be blank")
+      expect(page).to have_content('First name can\'t be blank')
     end
 
     scenario 'user already logged in' do
@@ -27,7 +28,6 @@ feature 'sign up' do
       fill_in 'Password', with: 'password'
       fill_in 'Password confirmation', with: 'password'
       click_button 'Sign Up'
-      click_link 'Sign Up'
 
       expect(page).to have_content('You are already signed in.')
     end

@@ -7,6 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1><%= link_to "Cookie Monster's Recipes", recipes_path %></h1>
+
+    <% if user_signed_in? %>
+      <%= link_to "Log Off", destroy_user_session_path, method: :delete %><br>
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path %><br>
+      <%= link_to "Log In", new_user_session_path %>
+    <% end %>
+  </header>
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 

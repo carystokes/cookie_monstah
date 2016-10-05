@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 feature 'log in' do
@@ -10,10 +11,7 @@ feature 'log in' do
       fill_in 'Password', with: 'password'
 
       click_button 'Log in'
-      expect(page).to have_content("Signed in successfully.")
-
-      click_link 'Log In'
-      expect(page).to have_content('You are already signed in.')
+      expect(page).to have_content('Signed in successfully.')
     end
   end
 end
