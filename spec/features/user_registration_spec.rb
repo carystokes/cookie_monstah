@@ -24,10 +24,7 @@ feature 'sign up' do
     scenario 'user already logged in' do
       jon = FactoryGirl.create(:user)
 
-      visit new_user_session_path
-      fill_in 'Email', with: jon.email
-      fill_in 'Password', with: 'password'
-      click_button 'Log in'
+      user_sign_in(jon)
       visit new_user_registration_path
 
       expect(page).to have_content('You are already signed in.')
