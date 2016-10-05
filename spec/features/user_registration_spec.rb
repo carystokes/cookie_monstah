@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 require 'rails_helper'
-require 'pry'
 
 feature 'sign up' do
   context 'as a user' do
@@ -26,7 +25,6 @@ feature 'sign up' do
 
       user_sign_in(jon)
       visit new_user_registration_path
-
       expect(page).to have_content('You are already signed in.')
     end
   end

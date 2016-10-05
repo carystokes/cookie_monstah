@@ -1,7 +1,20 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    if params[:search] == ''
+      flash.now[:alert] = 'Please specify a search phrase.'
+    end
+    if params[:search].present?
+      @recipes = Recipe.search(params[:search])
+      if @recipes.empty?
+        flash.now[:notice] = 'Sorry, there were no matches.'
+      else
+        flash.now[:notice] = 'Check out your search matches below!'
+      end
+    else
+      @recipes = Recipe.all
+    end
   end
+
 
   def show
     id = params[:id]
