@@ -24,11 +24,17 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    if user_signed_in?
+      @recipe = Recipe.new
+    else
+      flash[:notice] = "Please sign in"
+      redirect_to new_user_session_path
+    end
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
 
     if @recipe.save
       flash[:notice] = "Recipe added successfully"
