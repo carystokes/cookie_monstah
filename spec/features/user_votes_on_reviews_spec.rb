@@ -3,8 +3,13 @@
 require 'rails_helper'
 
 feature 'User votes on reviews' do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:recipe) { FactoryGirl.create(:recipe) }
+  let!(:review) { FactoryGirl.create(:review) }
+
   context 'As a user' do
     scenario 'I can upvote a review' do
+      user_sign_in(user)
     end
 
     scenario 'I can downvote a review' do
