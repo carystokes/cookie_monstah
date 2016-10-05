@@ -6,15 +6,10 @@ feature 'User creates recipe' do
     scenario 'I can navigate to a page to create a new recipe' do
       visit root_path
 
-      #test to make sure user is signed in?
-
       click_link 'Add a Recipe'
 
       expect(current_path).to eq(new_recipe_path)
     end
-
-    # scenario 'I must be signed in to create a new recipe' do
-    # end
 
     scenario 'I must provide a title, ingredients, and instructions to create the recipe' do
       visit new_recipe_path
@@ -71,9 +66,5 @@ feature 'User creates recipe' do
       expect(page).to have_content('Recipe added successfully')
     end
 
-    # scenario 'I can optionally check category boxes that align with allergens' do
-    #   visit new_recipe_path
-    #
-    # end
   end
 end
