@@ -6,11 +6,8 @@ feature 'log in' do
     scenario 'user provides valid user information for log-in' do
       jon = FactoryGirl.create(:user)
 
-      visit new_user_session_path
-      fill_in 'Email', with: jon.email
-      fill_in 'Password', with: 'password'
+      user_sign_in(jon)
 
-      click_button 'Log in'
       expect(page).to have_content('Signed in successfully.')
     end
   end
