@@ -28,7 +28,7 @@ feature 'search' do
 
       fill_in 'search', with: 'rocks'
       click_button 'Search'
-      expect(page).to have_content('No recipes found.')
+      expect(page).to have_content('Sorry, there were no matches.')
       expect(page).not_to have_content('Simple Recipe')
     end
   end
