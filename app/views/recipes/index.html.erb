@@ -3,3 +3,7 @@
 <% end %>
 
 <%= link_to "Add a Recipe", new_recipe_path %>
+
+<% if @recipes.blank? %>
+  <h4>No recipes found.</h4>
+<% end %>
