@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   def edit
     @review = Review.find(params[:id])
   end
@@ -28,7 +27,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     if @review.update_attributes(review_params)
-      flash[:notice] = "Review successfully edited"
+      flash[:notice] = 'Review successfully edited'
       redirect_to @review.recipe
     else
       flash[:notice] = @review.errors.full_messages.join(', ')
@@ -40,10 +39,9 @@ class ReviewsController < ApplicationController
     review = Review.find(params[:id])
     recipe = review.recipe
     review.destroy
-    flash[:success] = "Review successfully deleted"
+    flash[:success] = 'Review successfully deleted'
     redirect_to recipe
   end
-
 
   private
 
