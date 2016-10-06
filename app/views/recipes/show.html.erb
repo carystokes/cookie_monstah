@@ -13,6 +13,8 @@ No one has reviewed this yet.
 <% @reviews.each do |r| %>
   Rating: <%= r.rating %>
   <%= r.body %>
+  <%= link_to "upvote", %>
+  <%= link_to "downvote", %>
 <% end %>
 
 <h3>Add a Review!</h3>
