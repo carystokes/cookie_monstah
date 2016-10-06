@@ -2,16 +2,15 @@
 require 'rails_helper'
 
 feature 'User writes a review' do
-  let!(:user) { FactoryGirl.create(:user) }
-  let!(:recipe) { FactoryGirl.create(:recipe, user: user) }
+  let!(:user2) { FactoryGirl.create(:user, first_name: 'Fran') }
+  let!(:recipe) { FactoryGirl.create(:recipe) }
   context 'As a user' do
     scenario 'I can see reviews on the Recipe show page' do
-      user_sign_in(user)
       review = Review.create(
         rating: 3,
         body: 'soup is not a cookie but it was delicious',
         recipe: recipe,
-        user: user
+        user: recipe.user
       )
       visit recipe_path(recipe)
 
@@ -20,14 +19,14 @@ feature 'User writes a review' do
     end
 
     scenario 'There is a default message when no reviews have been left' do
-      user_sign_in(user)
+      user_sign_in(user2)
       visit recipe_path(recipe)
 
       expect(page).to have_content 'No one has reviewed this yet.'
     end
 
     scenario 'I can create a review on the Recipe show page' do
-      user_sign_in(user)
+      user_sign_in(user2)
       visit recipe_path(recipe)
       fill_in 'Rating', with: 4
       fill_in 'Body', with: 'I really like soup'
@@ -41,7 +40,7 @@ feature 'User writes a review' do
 
     scenario 'I must have a rating to create a review and optionally\
      a description' do
-      user_sign_in(user)
+      user_sign_in(user2)
       visit recipe_path(recipe)
 
       fill_in 'Rating', with: 4
@@ -54,7 +53,7 @@ feature 'User writes a review' do
 
     scenario 'I expect an error if I put a rating that is not between\
      1 and 5' do
-      user_sign_in(user)
+      user_sign_in(user2)
       visit recipe_path(recipe)
 
       fill_in 'Rating', with: 27
@@ -66,7 +65,7 @@ feature 'User writes a review' do
     end
 
     scenario 'I expect an error if I put a rating that is not an integer' do
-      user_sign_in(user)
+      user_sign_in(user2)
       visit recipe_path(recipe)
 
       fill_in 'Rating', with: 3.7
@@ -77,7 +76,7 @@ feature 'User writes a review' do
     end
 
     scenario 'I expect an error if I don\'t provide a rating' do
-      user_sign_in(user)
+      user_sign_in(user2)
       visit recipe_path(recipe)
 
       fill_in 'Body', with: 'I don\'t like numbers I\'d rather\
