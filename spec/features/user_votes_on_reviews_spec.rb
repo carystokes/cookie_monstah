@@ -35,6 +35,7 @@ feature 'User votes on reviews' do
       user_sign_in(user)
       visit recipe_path(recipe)
       click_link 'upvote'
+      binding.pry
 
       expect(vote.value).to eq 1
     end
