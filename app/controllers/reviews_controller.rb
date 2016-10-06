@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     if @review.update_attributes(review_params)
-      flash[:notice] = "Review edited successfully"
+      flash[:notice] = "Review successfully edited"
       redirect_to @review.recipe
     else
       flash[:notice] = @review.errors.full_messages.join(', ')
