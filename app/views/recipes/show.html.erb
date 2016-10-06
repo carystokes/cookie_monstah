@@ -3,6 +3,8 @@
 <%= @recipe.description %>
 <%= @recipe.ingredients %>
 <%= @recipe.instructions %>
+<% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+<%= link_to full_name, user_path(@recipe.user.id) %>
 
 <h2>Reviews:</h2>
 

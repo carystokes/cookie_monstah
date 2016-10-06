@@ -12,6 +12,8 @@ feature 'sign up' do
       fill_in 'Password confirmation', with: 'password'
       click_button 'Sign Up'
       expect(page).to have_content('Welcome! You have signed up successfully.')
+      save_and_open_page
+      expect(page).to have_css('img#profile_image')
     end
 
     scenario 'user provides invalid information for registration' do

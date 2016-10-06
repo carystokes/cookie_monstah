@@ -13,15 +13,21 @@ class RecipesController < ApplicationController
     else
       @recipes = Recipe.all
     end
+    if user_signed_in?
+      @current_user = current_user
+      binding.pry
+    end
   end
-
 
   def show
     id = params[:id]
     @recipe = Recipe.find(id)
+    @recipe.user = current_user
     @reviews = @recipe.reviews
     @review = Review.new
   end
+
+  def
 
   def new
     if user_signed_in?
