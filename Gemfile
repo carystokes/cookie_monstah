@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'pg_search'
+gem 'carrierwave', '= 0.11.2'
 group :development, :test do
   gem 'rubocop'
   gem 'capybara'
