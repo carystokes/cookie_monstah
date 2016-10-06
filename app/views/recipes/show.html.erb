@@ -1,4 +1,5 @@
 <%= @recipe.title %>
+Created by: <%= @recipe.user %>
 
 <%= @recipe.description %>
 <%= @recipe.ingredients %>
@@ -12,7 +13,12 @@ No one has reviewed this yet.
 
 <% @reviews.each do |r| %>
   Rating: <%= r.rating %>
+  By: <%= r.user %>
   <%= r.body %>
+  <% if r.user == current_user %>
+    <%= link_to "Edit Review", edit_review_path(r) %>
+    <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+  <% end %>
 <% end %>
 
 <h3>Add a Review!</h3>
@@ -25,5 +31,7 @@ No one has reviewed this yet.
 <%= f.submit "Add a Review" %>
 <% end %>
 
-<%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
-<%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+<% if @user == current_user %>
+  <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+  <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+<% end %>

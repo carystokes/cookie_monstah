@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(id)
     @reviews = @recipe.reviews
     @review = Review.new
+    @user = @recipe.user
   end
 
   def new
