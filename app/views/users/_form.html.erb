@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+  <%= f.text_area :first_name, placeholder: @user.first_name %>
+  <br>
+  <%= f.text_area :last_name, placeholder: @user.last_name %>
+  <br>
+  <%= f.text_area :email, placeholder: @user.email %>
+  <br>
+  <%= f.submit "Save Changes" %>
+<% end %>

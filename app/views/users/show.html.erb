@@ -1,9 +1,12 @@
-<h1><%= @current_user.first_name %> <%= @current_user.last_name %>'s Profile</h1>
+<h1><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
+<% binding.pry %>
+<a href="#">
+  <%= user_avatar @user %>
+</a>
 
-<h3>First name: <%= @current_user.first_name %></h3>
-<h3>Last name: <%= @current_user.last_name %></h3>
-<h3>Email: <%= @current_user.email %></h3>
-<img src="<%= @current_user.avatar.current_path %>" />
+<h3>First name: <%= @user.first_name %></h3>
+<h3>Last name: <%= @user.last_name %></h3>
+<h3>Email: <%= @user.email %></h3>
 
 <%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>

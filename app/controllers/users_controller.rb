@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  helper AvatarDefaultHelper
+  
   def index
     @users = User.all
   end
