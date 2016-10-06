@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'user can delete reviews' do
   let!(:review) { FactoryGirl.create(:review) }
   let!(:user) { review.user }
   let!(:recipe) { review.recipe }
-  let!(:user2) { FactoryGirl.create(:user, first_name: "Fran",
-      email: "frantheman@yahoo.com") }
+  let!(:user2) { FactoryGirl.create(:user, first_name: 'Fran') }
   context 'as a authenticated user' do
     scenario 'I can delete my own reviews' do
       user_sign_in(user)

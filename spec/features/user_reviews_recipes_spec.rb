@@ -2,8 +2,7 @@
 require 'rails_helper'
 
 feature 'User writes a review' do
-  let!(:user2) { FactoryGirl.create(:user, first_name: "Fran",
-      email: "frantheman@yahoo.com") }
+  let!(:user2) { FactoryGirl.create(:user, first_name: 'Fran') }
   let!(:recipe) { FactoryGirl.create(:recipe) }
   context 'As a user' do
     scenario 'I can see reviews on the Recipe show page' do
