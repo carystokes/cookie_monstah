@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:edit, :update, :destroy] do
-    resources :votes
+    resources :votes, only: [:new, :create, :edit, :update]
   end
 
   devise_for :views

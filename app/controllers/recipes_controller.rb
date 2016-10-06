@@ -22,6 +22,7 @@ class RecipesController < ApplicationController
     @reviews = @recipe.reviews
     @review = Review.new
     @user = @recipe.user
+    @votes = @review.votes
   end
 
   def new

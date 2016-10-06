@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'pg_search'
+gem 'react-rails'
 group :development, :test do
   gem 'rubocop'
   gem 'capybara'

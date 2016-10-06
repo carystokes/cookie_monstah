@@ -1,5 +1,5 @@
 <%= @recipe.title %>
-Created by: <%= @recipe.user %>
+Created by: <%= @user.first_name %> <%= @user.last_name %>
 
 <%= @recipe.description %>
 <%= @recipe.ingredients %>
@@ -13,10 +13,10 @@ No one has reviewed this yet.
 
 <% @reviews.each do |r| %>
   Rating: <%= r.rating %>
-  By: <%= r.user %>
+  By: <%= r.user.first_name %> <%= r.user.last_name %>
   <%= r.body %>
-  <%= link_to "upvote", %>
-  <%= link_to "downvote", %>
+  <%= link_to "Upvote", edit_review_vote_path(r) %>
+  <%= link_to "Downvote", edit_review_vote_path(r) %>
   <% if r.user == current_user %>
     <%= link_to "Edit Review", edit_review_path(r) %>
     <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
