@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 feature 'User edits recipe' do
-  let!(:user) { FactoryGirl.create(:user) }
-  let!(:recipe) { FactoryGirl.create(:recipe, user: user) }
+  let!(:recipe) { FactoryGirl.create(:recipe) }
+  let!(:user) { recipe.user }
+  let!(:user2) { FactoryGirl.create(:user, first_name: "Fran",
+      email: "frantheman@yahoo.com") }
   context 'As an authenicated user' do
-    scenario 'I can navigate to an edit page from the show page' do
+    scenario 'I can navigate to an edit page of my own recipe' do
       user_sign_in(user)
       visit recipe_path(recipe)
       click_link 'Edit Recipe'
@@ -87,5 +89,19 @@ feature 'User edits recipe' do
 
       expect(page).to have_content 'Ingredients can\'t be blank'
     end
+
+    # scenario 'There is no link to edit recipes made by other people' do
+    #   user_sign_in(user2)
+    #   visit recipe_path(recipe)
+    #
+    #   expect(page).not_to have_link 'Edit Recipe'
+    # end
+    #
+    # scenario 'I cannot edit recipes made by other people' do
+    #   user_sign_in(user2)
+    #   visit edit_recipe_path(recipe)
+    #
+    #   expect(page).to have_content('You cannot edit this recipe')
+    # end
   end
 end
