@@ -17,24 +17,24 @@ feature 'User votes on reviews' do
       expect(page).to have_content 'downvote'
     end
 
-    scenario 'I cannot upvote a review if I\'m not signed in.' do
-      visit recipe_path(recipe)
-      click_link 'upvote'
-
-      expect(page).to have_content 'Please sign in'
-    end
-
-    scenario 'I cannot downvote a review if I\'m not signed in.' do
-      visit recipe_path(recipe)
-      click_button 'downvote'
-
-      expect(page).to have_content 'Please sign in'
-    end
+    # scenario 'I cannot upvote a review if I\'m not signed in.' do
+    #   visit recipe_path(recipe)
+    #   click_link 'upvote'
+    #
+    #   expect(page).to have_content 'Please sign in'
+    # # end
+    #
+    # scenario 'I cannot downvote a review if I\'m not signed in.' do
+    #   visit recipe_path(recipe)
+    #   click_button 'downvote'
+    #
+    #   expect(page).to have_content 'Please sign in'
+    # end
 
     scenario 'I can upvote a review' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_button 'upvote'
+      click_link 'upvote'
 
       expect(vote.value).to eq 1
     end
@@ -42,7 +42,7 @@ feature 'User votes on reviews' do
     scenario 'I can downvote a review' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_button 'downvote'
+      click_link 'downvote'
 
       expect(vote.value).to eq -1
     end
@@ -50,7 +50,7 @@ feature 'User votes on reviews' do
     scenario 'I can change my upvote to a downvote' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_button 'upvote'
+      click_link 'upvote'
       click_button 'downvote'
 
       expect(vote.value).to eq -1
@@ -59,8 +59,8 @@ feature 'User votes on reviews' do
     scenario 'I can change my downvote to an upvote' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_button 'downvote'
-      click_button 'upvote'
+      click_link 'downvote'
+      click_link 'upvote'
 
       expect(vote.value).to eq 1
     end
@@ -69,8 +69,8 @@ feature 'User votes on reviews' do
     my upvote is deleted' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_button 'upvote'
-      click_button 'upvote'
+      click_link 'upvote'
+      click_link 'upvote'
 
       expect(vote.value).to eq 0
     end
@@ -79,8 +79,8 @@ feature 'User votes on reviews' do
      my downvote is deleted' do
        user_sign_in(user)
        visit recipe_path(recipe)
-       click_button 'downvote'
-       click_button 'downvote'
+       click_link 'downvote'
+       click_link 'downvote'
 
        expect(vote.value).to eq 0
     end

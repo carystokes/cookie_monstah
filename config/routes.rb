@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:edit, :update, :destroy] do
-    resources :votes, only: [:new, :create, :edit, :update]
+    member do
+      post 'upvote'
+      post 'downvote'
+    end
   end
 
   devise_for :views

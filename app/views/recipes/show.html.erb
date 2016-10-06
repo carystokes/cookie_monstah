@@ -15,8 +15,11 @@ No one has reviewed this yet.
   Rating: <%= r.rating %>
   By: <%= r.user.first_name %> <%= r.user.last_name %>
   <%= r.body %>
-  <%= link_to "Upvote", edit_review_vote_path(r) %>
-  <%= link_to "Downvote", edit_review_vote_path(r) %>
+  <%= pluralize(r.votes.count, 'votes') %>
+
+  <%= button_to 'upvote', upvote_review_path(r), method: :post %>
+  <%= button_to 'downvote', downvote_review_path(r), method: :post %>
+
   <% if r.user == current_user %>
     <%= link_to "Edit Review", edit_review_path(r) %>
     <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
