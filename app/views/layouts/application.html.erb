@@ -5,22 +5,26 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
 </head>
 <body>
   <header>
     <h1><%= link_to "Cookie Monster's Recipes", recipes_path %></h1>
 
-    <% if user_signed_in? %>
-      <%= link_to "Log Off", destroy_user_session_path, method: :delete %><br>
-    <% else %>
-      <%= link_to "Sign Up", new_user_registration_path %><br>
-      <%= link_to "Log In", new_user_session_path %>
-    <% end %>
+    <div class="sign_in">
+      <% if user_signed_in? %>
+        <%= link_to "Log Off", destroy_user_session_path, method: :delete %><br>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path %><br>
+        <%= link_to "Log In", new_user_session_path %>
+      <% end %>
 
-    <%= form_tag(recipes_path, method: "get", id: "search") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
-      <%= submit_tag "Search", name: nil %>
-    <% end %>
+      <%= form_tag(recipes_path, method: "get", id: "search") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+        <%= submit_tag "Search", name: nil %>
+      <% end %>
+    </div>
   </header>
   <% flash.each do |key, value| %>
     <%= value %>

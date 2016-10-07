@@ -1,37 +1,48 @@
-<%= @recipe.title %>
-Created by: <%= @recipe.user %>
-
-<%= @recipe.description %>
-<%= @recipe.ingredients %>
-<%= @recipe.instructions %>
-
-<h2>Reviews:</h2>
-
-<% if @reviews.empty? %>
-No one has reviewed this yet.
-<% end %>
-
-<% @reviews.each do |r| %>
-  Rating: <%= r.rating %>
-  By: <%= r.user %>
-  <%= r.body %>
-  <% if r.user == current_user %>
-    <%= link_to "Edit Review", edit_review_path(r) %>
-    <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+<div class="recipe_body">
+  <h2><%= @recipe.title %></h2>
+  Created by: <%= @recipe.user.first_name %> <%= @recipe.user.last_name %>
+  <% if @user == current_user %>
+    <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+    <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
   <% end %>
-<% end %>
+  <br>
+  <%= @recipe.description %>
+  <br>
+  <h5>Ingredients</h5> <br>
+  <%= @recipe.ingredients %>
+  <br>
+  <h5>Instructions</h5> <br>
+  <%= @recipe.instructions %>
+  <br>
+</div>
 
-<h3>Add a Review!</h3>
-<%= form_for [@recipe, @review] do |f| %>
-<%= f.label :rating %>
-<%= f.text_field :rating %>
+<div class="reviews_body">
+  <h3>Reviews:</h3>
 
-<%= f.label :body %>
-<%= f.text_area :body %>
-<%= f.submit "Add a Review" %>
-<% end %>
+  <% if @reviews.empty? %>
+  No one has reviewed this yet.
+  <% end %>
 
-<% if @user == current_user %>
-  <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
-  <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
-<% end %>
+  <% @reviews.each do |r| %>
+    <div class="review">
+      Rating: <%= r.rating %>
+      By: <%= r.user.first_name %> <%= r.user.last_name %>
+      <%= r.body %>
+      <% if r.user == current_user %>
+        <%= link_to "Edit Review", edit_review_path(r) %>
+        <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
+
+  <h3>Add a Review!</h3>
+  <%= form_for [@recipe, @review] do |f| %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <%= f.submit "Add a Review" %>
+  <% end %>
+</div>
