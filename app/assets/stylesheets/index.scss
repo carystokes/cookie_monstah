@@ -1,0 +1,56 @@
+header {
+  h1 {
+    color: white;
+    font-family: Lobster;
+    text-align: center;
+    display: inline;
+    padding: 1rem;
+
+    :link {
+      color: white;
+    }
+
+    :visited {
+      color: white;
+    }
+  };
+
+  .sign_in {
+    float: right;
+    display: inline;
+  };
+}
+
+h2 {
+  color: $dark-grey;
+  font-family: Quattrocento;
+  font-size: 3rem;
+
+  :link {
+    color: $dark-grey;
+  }
+
+  :visited {
+    color: $dark-grey;
+  }
+}
+
+.recipe_index {
+  background-color: white;
+  padding: 1rem;
+  border: black solid 2px;
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .recipe_teaser {
+    padding: 1rem;
+    border-bottom: $light-grey solid;
+  }
+}
+
+.sign_in {
+  float: right;
+  padding: 1rem;
+}

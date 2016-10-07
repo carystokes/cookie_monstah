@@ -1,19 +1,29 @@
 <div class="recipe_body">
+
   <h2><%= @recipe.title %></h2>
-  Created by: <%= @recipe.user.first_name %> <%= @recipe.user.last_name %>
+  <div class="creator_name">
+    <%= @recipe.user.first_name %> <%= @recipe.user.last_name %>
+  </div>
   <% if @user == current_user %>
     <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
     <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
   <% end %>
   <br>
+
   <%= @recipe.description %>
+
   <br>
-  <h5>Ingredients</h5> <br>
-  <%= @recipe.ingredients %>
-  <br>
-  <h5>Instructions</h5> <br>
-  <%= @recipe.instructions %>
-  <br>
+  <div class="ingredients">
+    <h5>Ingredients</h5> <br>
+    <%= @recipe.ingredients %>
+  </div>
+
+  <div class="instructions">
+    <h5>Instructions</h5> <br>
+    <%= @recipe.instructions %>
+    <br>
+  </div>
+
 </div>
 
 <div class="reviews_body">
@@ -36,13 +46,17 @@
     <br>
   <% end %>
 
-  <h3>Add a Review!</h3>
-  <%= form_for [@recipe, @review] do |f| %>
-  <%= f.label :rating %>
-  <%= f.text_field :rating %>
+  <div class="add_review">
+    <h3>Add a Review!</h3>
+    <%= form_for [@recipe, @review] do |f| %>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+    <br>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    <br>
+    <%= f.submit "Add a Review" %>
+    <% end %>
+  </div>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-  <%= f.submit "Add a Review" %>
-  <% end %>
 </div>

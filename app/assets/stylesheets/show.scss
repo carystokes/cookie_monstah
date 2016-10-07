@@ -1,0 +1,28 @@
+.recipe_body {
+  background-color: white;
+  padding: 1rem 2rem;
+  border: black solid 2px;
+  margin: 0rem 1rem;
+
+  h5 {
+    color: $dark-grey;
+  }
+
+  .creator_name {
+    color: $light-grey
+  }
+}
+
+.reviews_body {
+  background-color: $light-grey;
+  border: black solid 2px;
+  padding: 1rem;
+  margin: 0rem 1rem;
+
+  .review {
+    background-color: white;
+    margin: 0.5rem 3rem;
+    padding: 1rem;
+    border: black solid 2px;
+  }
+}
