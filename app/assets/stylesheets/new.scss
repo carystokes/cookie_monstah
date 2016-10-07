@@ -1,12 +1,12 @@
 .new-recipe {
-  text-align: center;
-  font-family: Quattrocento;
   background-color: $white;
+  font-family: Quattrocento;
+  margin: 1rem 3rem -1rem;
   padding: 2rem;
   padding-top: 3rem;
-  margin: 1rem 3rem -1rem 3rem;
+  text-align: center;
 }
 
 .recipe-form {
-  margin-top: 0rem 3rem 1rem 3rem;
+  margin-top: 0 3rem 1rem;
 }

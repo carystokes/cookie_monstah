@@ -1,16 +1,16 @@
 .recipe-body {
   background-color: $white;
-  padding: 1rem 2rem 6rem 2rem;
   border: $black solid 2px;
-
+  padding: 1rem 2rem 6rem;
+  
   h2 {
     padding-bottom: -1rem;
   }
 
   .creator-name {
     color: $medium-grey;
-    margin-top: -2.5rem;
     margin-left: 1rem;
+    margin-top: -2.5rem;
   }
 
   .description {
@@ -20,8 +20,8 @@
   h5 {
     color: $dark-grey;
     font-family: Quattrocento;
-    margin: 1rem;
     font-size: 1.3rem;
+    margin: 1rem;
   }
 
   p {
@@ -37,15 +37,15 @@
   }
 
   .instructions {
+    border-left: $light-grey solid 4px;
     float: right;
     margin-top: -7.6rem;
-    border-left: $light-grey solid 4px;
   }
 }
 
 .reviews-body {
   h3 {
-    margin: 0rem 3rem;
+    margin: 0 3rem;
     padding-bottom: 1rem;
   };
 
