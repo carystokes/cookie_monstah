@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  helper AvatarDefaultHelper
   def index
     if params[:search] == ''
       flash.now[:alert] = 'Please specify a search phrase.'
@@ -13,8 +14,10 @@ class RecipesController < ApplicationController
     else
       @recipes = Recipe.all
     end
+    if user_signed_in?
+      @current_user = current_user
+    end
   end
-
 
   def show
     id = params[:id]

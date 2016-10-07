@@ -1,9 +1,16 @@
 <%= @recipe.title %>
-Created by: <%= @recipe.user %>
+<% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+Created by: <%= link_to full_name, user_path(@recipe.user.id) %>
 
-<%= @recipe.description %>
-<%= @recipe.ingredients %>
-<%= @recipe.instructions %>
+<img id="recipe_image" src=<%= @recipe.avatar %>  />
+
+<div>
+  <%= @recipe.description %>
+  <%= @recipe.ingredients %>
+  <%= @recipe.instructions %>
+</div>
+<% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+
 
 <h2>Reviews:</h2>
 
