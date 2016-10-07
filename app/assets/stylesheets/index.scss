@@ -1,20 +1,18 @@
-header {
-  h1 {
+h1 {
+  color: $white;
+  font-family: Lobster;
+  padding: 1rem;
+  text-align: center;
+
+
+  :link {
     color: $white;
-    font-family: Lobster;
-    padding: 1rem;
-    text-align: center;
+  }
 
-
-    :link {
-      color: $white;
-    }
-
-    :visited {
-      color: $white;
-    }
-  };
-}
+  :visited {
+    color: $white;
+  }
+};
 
 .sign-in {
   background-color: $light-grey;
