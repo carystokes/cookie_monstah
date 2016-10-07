@@ -12,6 +12,9 @@
 
     <% if user_signed_in? %>
       <%= link_to "Log Off", destroy_user_session_path, method: :delete %><br>
+      <% if current_user.admin %>
+        <%= link_to "View All Users", users_path %>
+      <% end %>
     <% else %>
       <%= link_to "Sign Up", new_user_registration_path %><br>
       <%= link_to "Log In", new_user_session_path %>

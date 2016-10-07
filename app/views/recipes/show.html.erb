@@ -35,3 +35,7 @@ No one has reviewed this yet.
   <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
   <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
 <% end %>
+
+<% if current_user.admin %>
+  <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+<% end %>
