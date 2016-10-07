@@ -9,7 +9,6 @@ feature 'User creates recipe' do
 
       click_link 'Add a Recipe'
 
-      save_and_open_page
       expect(current_path).to eq(new_recipe_path)
     end
 

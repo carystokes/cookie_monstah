@@ -10,7 +10,7 @@ feature 'admin views user page do' do
       visit user_path(user)
       click_link 'Delete'
 
-      expect(page).to have_content('Account has been deleted')
+      expect(page).to have_content('User deleted')
       expect(page).not_to have_content('John Smith')
     end
 
@@ -27,9 +27,8 @@ feature 'admin views user page do' do
 
       expect(page).to have_content('You may only edit your own profile')
     end
-
+    
     scenario 'admin can turn other users into admins' do
-      user_sign_in(user2)
       user_sign_in(user2)
       visit user_path(user)
       click_button 'Create Admin'

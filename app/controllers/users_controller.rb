@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if User.find(params[:id]) == current_user
+    if User.find(params[:id]) == current_user || current_user.admin
       User.find(params[:id]).destroy
       flash[:success] = "User deleted"
       redirect_to root_path
