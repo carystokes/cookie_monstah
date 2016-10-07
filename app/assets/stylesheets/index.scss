@@ -2,8 +2,9 @@ header {
   h1 {
     color: $white;
     font-family: Lobster;
-    text-align: center;
     padding: 1rem;
+    text-align: center;
+
 
     :link {
       color: $white;
@@ -13,19 +14,20 @@ header {
       color: $white;
     }
   };
-
-  .sign-in {
-    text-align: right;
-    float: center;
-    border: $medium-grey solid 2px;
-    background-color: $light-grey;
-    padding: 1rem;
-    font-family: Quattrocento;
-    .search {
-      text-align: left;
-    }
-  };
 }
+
+.sign-in {
+  background-color: $light-grey;
+  border: $medium-grey solid 2px;
+  float: center;
+  font-family: Quattrocento;
+  padding: 1rem;
+  text-align: right;
+
+  .search {
+    text-align: left;
+  }
+};
 
 h2 {
   color: $dark-grey;
