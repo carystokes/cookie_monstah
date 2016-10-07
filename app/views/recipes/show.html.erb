@@ -1,37 +1,75 @@
-<%= @recipe.title %>
-Created by: <%= @recipe.user %>
+<div class="recipe_body">
 
-<%= @recipe.description %>
-<%= @recipe.ingredients %>
-<%= @recipe.instructions %>
+  <h2><%= @recipe.title %></h2>
+  <div class="edit_delete_recipe">
+    <% if @user == current_user %>
+      <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+      <br>
+      <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+    <% end %>
+  </div>
+  <div class="creator_name">
+    <%= @recipe.user.first_name %> <%= @recipe.user.last_name %>
+  </div>
+  <br>
 
-<h2>Reviews:</h2>
+  <div class="description">
+    <%= @recipe.description %>
+  </div>
 
-<% if @reviews.empty? %>
-No one has reviewed this yet.
-<% end %>
+  <br>
+  <div class="ingredients">
+    <h5>Ingredients</h5> <br>
+    <p><%= @recipe.ingredients %></p>
+  </div>
 
-<% @reviews.each do |r| %>
-  Rating: <%= r.rating %>
-  By: <%= r.user %>
-  <%= r.body %>
-  <% if r.user == current_user %>
-    <%= link_to "Edit Review", edit_review_path(r) %>
-    <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+  <div class="instructions">
+    <h5>Instructions</h5> <br>
+    <p><%= @recipe.instructions %></p>
+    <br>
+  </div>
+
+</div>
+
+<div class="reviews_body">
+  <h3>Reviews:</h3>
+
+  <% if @reviews.empty? %>
+  No one has reviewed this yet.
   <% end %>
-<% end %>
 
-<h3>Add a Review!</h3>
-<%= form_for [@recipe, @review] do |f| %>
-<%= f.label :rating %>
-<%= f.text_field :rating %>
+  <% @reviews.each do |r| %>
+    <div class="review">
+      <div class="name">
+        <%= r.user.first_name %> <%= r.user.last_name %>
+      </div>
+      <div class="rating">
+        <%= r.rating %>
+      </div>
+      <div class="body">
+        <%= r.body %>
+      </div>
+      <div class="edit_delete_review">
+        <% if r.user == current_user %>
+          <%= link_to "Edit Review", edit_review_path(r) %> <br>
+          <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  <% end %>
 
-<%= f.label :body %>
-<%= f.text_area :body %>
-<%= f.submit "Add a Review" %>
-<% end %>
+  <div class="add_review">
+    <h3>Add a Review!</h3>
+    <%= form_for [@recipe, @review] do |f| %>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+    <br>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    <br>
+    <%= f.submit "Add a Review" %>
+    <% end %>
+  </div>
 
-<% if @user == current_user %>
-  <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
-  <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
-<% end %>
+</div>
