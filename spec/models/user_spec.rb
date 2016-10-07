@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
   it { should_not have_valid(:email).when(nil, '', 'user',\
     'users@com', 'usersba.com') }
 
-  it { should have_valid(:profile_image_url).when('https://profile.image.url.com/cookie.jpg')}
+  it { should have_valid(:avatar).when('https://profile.image.url.com/cookie.jpg')}
 
   it 'has a matching password confirmation for the password' do
     user = User.new

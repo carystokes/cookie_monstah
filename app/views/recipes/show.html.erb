@@ -2,8 +2,8 @@
 <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
 Created by: <%= link_to full_name, user_path(@recipe.user.id) %>
 
-<a href="#">
-  <%= recipe_avatar @recipe.user %>
+<a href="#" id="a">
+  <%= @recipe.avatar %>
 </a>
 
 <div>

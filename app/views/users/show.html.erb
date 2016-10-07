@@ -1,12 +1,19 @@
 <h1><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
-<% binding.pry %>
+
 <a href="#">
-  <%= user_avatar @user %>
+  <img id="profile_image" src=<%= @user.avatar %>  />
 </a>
+
 
 <h3>First name: <%= @user.first_name %></h3>
 <h3>Last name: <%= @user.last_name %></h3>
 <h3>Email: <%= @user.email %></h3>
 
+<% if @user == current_user %>
 <%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
+<% end %>
+
+<% @recipes.each do |recipe| %>
+   <%= link_to recipe.title, recipe %>
+<% end %>
