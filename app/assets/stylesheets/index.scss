@@ -17,9 +17,10 @@ header {
   .sign_in {
     text-align: right;
     float: center;
-    border: black solid 2px;
+    border: $medium-grey solid 2px;
     background-color: $light-grey;
     padding: 1rem;
+    font-family: Quattrocento;
     .search {
       text-align: left;
     }
@@ -43,7 +44,7 @@ h2 {
 .recipe_index {
   background-color: white;
   padding: 1rem;
-  border: black solid 2px;
+  border: $medium-grey solid 2px;
 
   h2 {
     font-size: 2rem;

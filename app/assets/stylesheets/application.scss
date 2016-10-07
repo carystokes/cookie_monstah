@@ -2,6 +2,7 @@
 @import './colors';
 @import './show';
 @import './index';
+@import './new';
 
 body {
   background-color: $pink;
@@ -16,4 +17,13 @@ body {
     text-decoration: none;
     color: black;
   }
+}
+
+.flash {
+  background-color: $dark-grey;
+  color: white;
+  padding: 1rem;
+  font-family: Quattrocento;
+  font-size: 1rem;
+  font-weight: bold;
 }
