@@ -1,8 +1,16 @@
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe.title, recipe %>
-<% end %>
+<div class="recipe-index">
+  <% @recipes.each do |recipe| %>
+  <div class="recipe-teaser">
+    <h2><%= link_to recipe.title, recipe %></h2>
+    <%= link_to recipe.description, recipe %>
+  </div>
+  <% end %>
+</div>
 
-<%= link_to "Add a Recipe", new_recipe_path %>
+<br>
+<div class="add-recipe">
+  <%= link_to "Add a Recipe", new_recipe_path %>
+</div>
 
 <% if @recipes.blank? %>
   <h4>No recipes found.</h4>

@@ -1,2 +1,29 @@
 // @import "*";
+@import './colors';
+@import './show';
+@import './index';
+@import './new';
 
+body {
+  background-color: $pink;
+  font-family: Arial;
+
+  :link {
+    text-decoration: none;
+    color: $black;
+  }
+
+  :visited {
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+.flash {
+  background-color: $dark-grey;
+  color: $white;
+  padding: 1rem;
+  font-family: Quattrocento;
+  font-size: 1rem;
+  font-weight: bold;
+}

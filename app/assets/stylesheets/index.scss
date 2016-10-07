@@ -1,0 +1,75 @@
+header {
+  h1 {
+    color: $white;
+    font-family: Lobster;
+    text-align: center;
+    padding: 1rem;
+
+    :link {
+      color: $white;
+    }
+
+    :visited {
+      color: $white;
+    }
+  };
+
+  .sign-in {
+    text-align: right;
+    float: center;
+    border: $medium-grey solid 2px;
+    background-color: $light-grey;
+    padding: 1rem;
+    font-family: Quattrocento;
+    .search {
+      text-align: left;
+    }
+  };
+}
+
+h2 {
+  color: $dark-grey;
+  font-family: Quattrocento;
+  font-size: 3rem;
+
+  :link {
+    color: $dark-grey;
+  }
+
+  :visited {
+    color: $dark-grey;
+  }
+}
+
+.recipe-index {
+  background-color: $white;
+  padding: 1rem;
+  border: $medium-grey solid 2px;
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .recipe-teaser {
+    padding: 1rem;
+    border-bottom: $light-grey solid;
+  }
+}
+
+.add-recipe {
+  color: $white;
+  font-family: Quattrocento;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  margin-top: 0rem;
+  background-color: $dark-grey;
+
+  :link {
+    color: $white;
+  }
+
+  :visited {
+    color: $white;
+  }
+}
