@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161007182533) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",      null: false
+    t.string   "avatar"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161007182533) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "avatar"
     t.boolean  "admin",                  default: false
   end
 
