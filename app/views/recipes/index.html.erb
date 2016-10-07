@@ -1,6 +1,6 @@
-<div class="recipe_index">
+<div class="recipe-index">
   <% @recipes.each do |recipe| %>
-  <div class="recipe_teaser">
+  <div class="recipe-teaser">
     <h2><%= link_to recipe.title, recipe %></h2>
     <%= link_to recipe.description, recipe %>
   </div>
@@ -8,7 +8,7 @@
 </div>
 
 <br>
-<div class="add_recipe">
+<div class="add-recipe">
   <%= link_to "Add a Recipe", new_recipe_path %>
 </div>
 

@@ -1,20 +1,20 @@
 header {
   h1 {
-    color: white;
+    color: $white;
     font-family: Lobster;
     text-align: center;
     padding: 1rem;
 
     :link {
-      color: white;
+      color: $white;
     }
 
     :visited {
-      color: white;
+      color: $white;
     }
   };
 
-  .sign_in {
+  .sign-in {
     text-align: right;
     float: center;
     border: $medium-grey solid 2px;
@@ -41,8 +41,8 @@ h2 {
   }
 }
 
-.recipe_index {
-  background-color: white;
+.recipe-index {
+  background-color: $white;
   padding: 1rem;
   border: $medium-grey solid 2px;
 
@@ -50,14 +50,14 @@ h2 {
     font-size: 2rem;
   }
 
-  .recipe_teaser {
+  .recipe-teaser {
     padding: 1rem;
     border-bottom: $light-grey solid;
   }
 }
 
-.add_recipe {
-  color: white;
+.add-recipe {
+  color: $white;
   font-family: Quattrocento;
   text-align: center;
   font-size: 2rem;
@@ -66,10 +66,10 @@ h2 {
   background-color: $dark-grey;
 
   :link {
-    color: white;
+    color: $white;
   }
 
   :visited {
-    color: white;
+    color: $white;
   }
 }

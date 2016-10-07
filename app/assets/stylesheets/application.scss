@@ -10,18 +10,18 @@ body {
 
   :link {
     text-decoration: none;
-    color: black;
+    color: $black;
   }
 
   :visited {
     text-decoration: none;
-    color: black;
+    color: $black;
   }
 }
 
 .flash {
   background-color: $dark-grey;
-  color: white;
+  color: $white;
   padding: 1rem;
   font-family: Quattrocento;
   font-size: 1rem;
