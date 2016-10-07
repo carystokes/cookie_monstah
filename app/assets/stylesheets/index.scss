@@ -3,7 +3,6 @@ header {
     color: white;
     font-family: Lobster;
     text-align: center;
-    display: inline;
     padding: 1rem;
 
     :link {
@@ -16,8 +15,14 @@ header {
   };
 
   .sign_in {
-    float: right;
-    display: inline;
+    text-align: right;
+    float: center;
+    border: black solid 2px;
+    background-color: $light-grey;
+    padding: 1rem;
+    .search {
+      text-align: left;
+    }
   };
 }
 
@@ -50,7 +55,20 @@ h2 {
   }
 }
 
-.sign_in {
-  float: right;
+.add_recipe {
+  color: white;
+  font-family: Quattrocento;
+  text-align: center;
+  font-size: 2rem;
   padding: 1rem;
+  margin-top: 0rem;
+  background-color: $dark-grey;
+
+  :link {
+    color: white;
+  }
+
+  :visited {
+    color: white;
+  }
 }

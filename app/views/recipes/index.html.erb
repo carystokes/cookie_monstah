@@ -8,7 +8,9 @@
 </div>
 
 <br>
-<%= link_to "Add a Recipe", new_recipe_path %>
+<div class="add_recipe">
+  <%= link_to "Add a Recipe", new_recipe_path %>
+</div>
 
 <% if @recipes.blank? %>
   <h4>No recipes found.</h4>
