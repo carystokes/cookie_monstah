@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'admin views user page do' do
   let!(:recipe) { FactoryGirl.create(:recipe) }
-  let!(:user2) {FactoryGirl.create(:user, name: 'Joan', admin: true)}
+  let!(:user2) { FactoryGirl.create(:user, first_name: 'Joan', admin: true) }
   context 'as an admin' do
-    feature 'admin can delete a user\'s account' do
+    scenario 'admin can delete a user\'s account' do
       user_sign_in(user2)
       visit user_path(user)
       click_link 'Delete'
@@ -13,21 +13,21 @@ feature 'admin views user page do' do
       expect(page).not_to have_content('John Smith')
     end
 
-    feature 'there is no edit account button for admins' do
+    scenario 'there is no edit account button for admins' do
       user_sign_in(user2)
       visit user_path(user)
 
       expect(page).not_to have_content('Edit')
     end
 
-    feature 'admin cannot edit a user\'s account' do
+    scenario 'admin cannot edit a user\'s account' do
       user_sign_in(user2)
       visit edit_user_path(user)
 
       expect(page).to have_content('You may only edit your own profile')
     end
 
-    feature 'admin can turn other users into admins' do
+    scenario 'admin can turn other users into admins' do
       user_sign_in(user2)
       user_sign_in(user2)
       visit user_path(user)

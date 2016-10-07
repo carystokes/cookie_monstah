@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'admin views all users do' do
   let!(:recipe) { FactoryGirl.create(:recipe) }
   let!(:user) { recipe.user }
-  let!(:user2) {FactoryGirl.create(:user, name: 'Joan', admin: true)}
+  let!(:user2) { FactoryGirl.create(:user, first_name: 'Joan', admin: true) }
   context 'as an admin' do
-    feature 'an admin can delete recipes' do
+    scenario 'an admin can delete recipes' do
       user_sign_in(user2)
       visit recipe_path(recipe)
       click_link 'Delete Recipe'
@@ -14,14 +14,14 @@ feature 'admin views all users do' do
       expect(page).to have_content 'Recipe deleted'
     end
 
-    feature 'there is no link for an admin to edit recipes' do
+    scenario 'there is no link for an admin to edit recipes' do
       user_sign_in(user2)
       visit recipe_path(recipe)
 
       expect(page).not_to have_link 'Edit Recipe'
     end
 
-    feature 'an admin cannot edit recipes' do
+    scenario 'an admin cannot edit recipes' do
       user_sign_in(user2)
       visit edit_recipe_path(recipe)
 
