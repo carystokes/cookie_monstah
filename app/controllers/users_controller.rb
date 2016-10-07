@@ -36,9 +36,6 @@ class UsersController < ApplicationController
       User.find(params[:id]).destroy
       flash[:success] = "User deleted"
       redirect_to root_path
-    else
-      flash[:notice] = "You may only delete your own profile."
-      render 'show'
     end
   end
 

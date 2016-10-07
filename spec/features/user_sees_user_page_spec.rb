@@ -3,7 +3,10 @@ require 'rails_helper'
 feature 'user page' do
   let!(:recipe) { FactoryGirl.create(:recipe) }
   let!(:user) { recipe.user }
-  let!(:user2) { FactoryGirl.create(:user, first_name: 'Jenn', email: 'thejennster@frennz.com') }
+  let!(:user2) { FactoryGirl.create(:user,
+                  first_name: 'Jenn',
+                  email: 'thejennster@frennz.com')
+               }
 
   scenario 'user is not logged in and goes to user page via link' do
     visit recipe_path(recipe)
@@ -42,11 +45,13 @@ feature 'user page' do
     expect(page).not_to have_content('Jon')
 
     click_link 'Edit'
-    # expect(page).to have_content('Avatar')
-    page.attach_file('Avatar', Rails.root + 'spec/fixtures/Cookie-Monster-Cookies.jpg')
+
+    page.attach_file('Avatar', Rails.root +
+      'spec/fixtures/Cookie-Monster-Cookies.jpg')
     click_button 'Save Changes'
 
-    page.find('#profile_image')['src'].should have_content 'Cookie-Monster-Cookies.jpg'
+    page.find('#profile_image')['src'].should have_content
+      'Cookie-Monster-Cookies.jpg'
   end
 
   scenario 'a logged in user can delete their account :(' do
