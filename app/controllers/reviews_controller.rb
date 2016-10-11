@@ -45,8 +45,8 @@ class ReviewsController < ApplicationController
 
   def upvote
     @review = Review.find(params[:id])
-    @vote = Vote.find_or_create_by(user: current_user, review_id: @review.id)
     @recipe = @review.recipe
+    @vote = Vote.find_or_create_by(user: current_user, review_id: @review.id)
 
     if user_signed_in?
       @vote.value != 1 ? @vote.update(value: 1) : @vote.update(value: 0)
