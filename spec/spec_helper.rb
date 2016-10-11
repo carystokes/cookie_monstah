@@ -14,4 +14,8 @@ RSpec.configure do |config|
 
   config.include UserSignInHelper
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before :each do
+    ActionMailer::Base.deliveries.clear
+  end
 end

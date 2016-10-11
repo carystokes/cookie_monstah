@@ -86,5 +86,17 @@ feature 'User writes a review' do
 
       expect(page).to have_content 'Rating is not a number'
     end
+
+    scenario 'I expect to get an email when my product is reviewed' do
+      user_sign_in(user2)
+      visit recipe_path(recipe)
+
+      fill_in 'Rating', with: 4
+
+      click_button 'Add a Review'
+
+      expect(page).to have_content 'Review created successfully'
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+    end
   end
 end
