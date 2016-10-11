@@ -5,5 +5,4 @@ class Review < ActiveRecord::Base
 
   validates :rating, numericality: {only_integer: true},
   inclusion: { in: 1..5, message: 'must be between 1 - 5' }
-
 end
