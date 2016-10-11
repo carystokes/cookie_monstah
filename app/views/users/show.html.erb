@@ -11,9 +11,9 @@
    <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
 <% end %>
 
-<% if current_user.admin %>
+<% if current_user.try(:admin?) %>
    <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
-   <%= button_to "Create Admin", @user, action: :create_admin, method: :put %>
+   <%= button_to "Create Admin", @user, action: :create_admin, method: :patch %>
 <% end %>
 
 <% @recipes.each do |recipe| %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:edit, :update, :destroy]
-
+  
   devise_for :views
   devise_for :users
   resources :users

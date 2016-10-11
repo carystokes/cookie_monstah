@@ -50,14 +50,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :avatar)
   end
 
-  def create_admin
-    @user = User.find(params[:id])
-    if current_user.admin
-      @user.update_attribute(:admin, true)
-      flash[:notice] = 'User is now an admin'
-      redirect_to @user
-    end
-  end
-
-
+  # def create_admin
+  #   @user = User.find(params[:id])
+  #   binding.pry
+  #   if current_user.admin
+  #     @user.update_attribute(:admin, true)
+  #     flash[:notice] = 'User is now an admin'
+  #     redirect_to @user
+  #   end
+  # end
 end

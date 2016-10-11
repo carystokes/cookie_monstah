@@ -43,6 +43,6 @@ No one has reviewed this yet.
   <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
 <% end %>
 
-<% if current_user.admin %>
+<% if current_user.try(:admin?) %>
   <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
 <% end %>
