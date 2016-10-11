@@ -43,27 +43,27 @@ h2 {
 
 .recipe-index {
   background-color: $white;
-  padding: 1rem;
   border: $medium-grey solid 2px;
+  padding: 1rem;
 
   h2 {
     font-size: 2rem;
   }
 
   .recipe-teaser {
-    padding: 1rem;
     border-bottom: $light-grey solid;
+    padding: 1rem;
   }
 }
 
 .add-recipe {
+  background-color: $dark-grey;
   color: $white;
   font-family: Quattrocento;
-  text-align: center;
   font-size: 2rem;
-  padding: 1rem;
   margin-top: 0;
-  background-color: $dark-grey;
+  padding: 1rem;
+  text-align: center;
 
   :link {
     color: $white;
