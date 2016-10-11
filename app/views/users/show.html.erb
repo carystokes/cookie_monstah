@@ -13,7 +13,7 @@
 
 <% if current_user.try(:admin?) %>
    <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
-   <%= button_to "Create Admin", user_path(@user), method: :patch, params: { admin: true } %>
+   <%= button_to "Create Admin", @user, method: :patch, params: { admin: true } %>
 <% end %>
 
 <% @recipes.each do |recipe| %>
