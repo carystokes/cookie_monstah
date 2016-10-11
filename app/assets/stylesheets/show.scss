@@ -30,9 +30,9 @@
 
   .edit-delete-recipe {
     float: right;
-    margin-top: -5.5rem;
     font-family: Quattrocento;
-    font-color: $medium-grey
+    margin-top: -5.5rem;
+    color: $medium-grey;
 
   }
 
@@ -44,14 +44,14 @@
 }
 
 .reviews-body {
+  background-color: $light-grey;
+  border: $black solid 2px;
+  padding: 1rem;
+
   h3 {
     margin: 0 3rem;
     padding-bottom: 1rem;
   };
-
-  background-color: $light-grey;
-  border: $black solid 2px;
-  padding: 1rem;
 }
 
 .review {
