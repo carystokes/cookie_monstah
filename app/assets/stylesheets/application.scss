@@ -1,2 +1,41 @@
 // @import "*";
+@import "./colors";
+@import "./show";
+@import "./index";
+@import "./new";
 
+body {
+  background-color: $pink;
+  font-family: Arial;
+
+  :link {
+    color: $black;
+    text-decoration: none;
+  }
+
+  :visited {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+.website-title {
+  :link {
+    color: $white;
+    text-decoration: none;
+  }
+
+  :visited {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.flash {
+  background-color: $dark-grey;
+  color: $white;
+  font-family: Quattrocento;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem;
+}

@@ -1,42 +1,80 @@
-<%= @recipe.title %>
-<% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
-Created by: <%= link_to full_name, user_path(@recipe.user.id) %>
+<div class="recipe-body">
 
-<img id="recipe_image" src=<%= @recipe.avatar %>  />
+  <h2><%= @recipe.title %></h2>
+  <div class="edit-delete-recipe">
+    <% if @user == current_user %>
+      <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+      <br>
+      <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+    <% end %>
+  </div>
+  <div class="creator-name">
+    <img id="recipe_image" src=<%= @recipe.avatar %>  />
+    <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+    <%= link_to full_name, user_path(@recipe.user.id) %>
+  </div>
+  <br>
 
-<div>
-  <%= @recipe.description %>
-  <%= @recipe.ingredients %>
-  <%= @recipe.instructions %>
+  <div class="description">
+    <%= @recipe.description %>
+  </div>
+
+  <br>
+  <div class="ingredients">
+    <h5>Ingredients</h5> <br>
+    <p><%= @recipe.ingredients %></p>
+  </div>
+
+  <div class="instructions">
+    <h5>Instructions</h5> <br>
+    <p><%= @recipe.instructions %></p>
+    <br>
+  </div>
+
 </div>
-<% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
 
+<div class="reviews-body">
+  <h3>Reviews:</h3>
 
-<h2>Reviews:</h2>
+  <% if @reviews.empty? %>
+  No one has reviewed this yet.
+  <% end %>
 
-<% if @reviews.empty? %>
-No one has reviewed this yet.
-<% end %>
-
-<% @reviews.each do |r| %>
-  Rating: <%= r.rating %>
-  By: <%= r.user %>
-  <%= r.body %>
-  <% if r.user == current_user %>
-    <%= link_to "Edit Review", edit_review_path(r) %>
-    <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+  <% @reviews.each do |r| %>
+    <div class="review">
+      <div class="name">
+        <%= r.user.first_name %> <%= r.user.last_name %>
+      </div>
+      <div class="rating">
+        <%= r.rating %>
+      </div>
+      <div class="body">
+        <%= r.body %>
+      </div>
+      <div class="edit-delete-review">
+        <% if r.user == current_user %>
+          <%= link_to "Edit Review", edit_review_path(r) %> <br>
+          <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+        <% end %>
+      </div>
+    </div>
+    <br>
   <% end %>
 <% end %>
 
-<h3>Add a Review!</h3>
-<%= form_for [@recipe, @review] do |f| %>
-<%= f.label :rating %>
-<%= f.text_field :rating %>
 
-<%= f.label :body %>
-<%= f.text_area :body %>
-<%= f.submit "Add a Review" %>
-<% end %>
+<div class="add-review">
+  <h3>Add a Review!</h3>
+  <%= form_for [@recipe, @review] do |f| %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <br>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit "Add a Review" %>
+  <% end %>
+</div>
 
 <% if @user == current_user %>
   <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
@@ -46,3 +84,5 @@ No one has reviewed this yet.
 <% if current_user.try(:admin?) %>
   <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
 <% end %>
+
+</div>
