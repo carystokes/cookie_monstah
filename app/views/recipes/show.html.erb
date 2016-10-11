@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="recipe-body">
 
   <h2><%= @recipe.title %></h2>
@@ -9,7 +10,9 @@
     <% end %>
   </div>
   <div class="creator-name">
-    <%= @recipe.user.first_name %> <%= @recipe.user.last_name %>
+    <img id="recipe_image" src=<%= @recipe.avatar %>  />
+    <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+    <%= link_to full_name, user_path(@recipe.user.id) %>
   </div>
   <br>
 
