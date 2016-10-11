@@ -49,4 +49,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :avatar)
   end
+
+  def create_admin
+    @user = User.find(params[:id])
+    if current_user.admin
+      @user.admin = true
+    end
+  end
 end

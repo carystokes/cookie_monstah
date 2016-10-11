@@ -27,13 +27,13 @@ feature 'admin views user page do' do
 
       expect(page).to have_content('You may only edit your own profile')
     end
-    
+
     scenario 'admin can turn other users into admins' do
       user_sign_in(user2)
       visit user_path(user)
       click_button 'Create Admin'
 
-      expect(user.admin).to eq(true)
+      expect(user.admin).to be(true)
     end
   end
 end
