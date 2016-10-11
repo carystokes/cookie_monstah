@@ -33,9 +33,8 @@ feature 'User votes on reviews' do
       user_sign_in(user)
       visit recipe_path(recipe)
       click_button'upvote'
-      binding.pry
 
-      expect(vote.value).to eq 1
+      expect(review.votes[0].value).to eq 1
     end
 
     scenario 'I can downvote a review' do
@@ -43,7 +42,7 @@ feature 'User votes on reviews' do
       visit recipe_path(recipe)
       click_button 'downvote'
 
-      expect(review.vote.value).to eq -1
+      expect(review.votes[0].value).to eq -1
     end
 
     scenario 'I can change my upvote to a downvote' do
@@ -52,7 +51,7 @@ feature 'User votes on reviews' do
       click_button 'upvote'
       click_button 'downvote'
 
-      expect(review.vote.value).to eq -1
+      expect(review.votes[0].value).to eq -1
     end
 
     scenario 'I can change my downvote to an upvote' do
@@ -61,7 +60,7 @@ feature 'User votes on reviews' do
       click_button 'downvote'
       click_button 'upvote'
 
-      expect(review.vote.value).to eq 1
+      expect(review.votes[0].value).to eq 1
     end
 
     scenario 'if I try to click up when I\'ve already upvoted, \
@@ -71,7 +70,7 @@ feature 'User votes on reviews' do
       click_button 'upvote'
       click_button 'upvote'
 
-      expect(review.vote.value).to eq 0
+      expect(review.votes[0].value).to eq 0
     end
 
     scenario 'if I try to click down when I\'ve already downvoted,\
@@ -81,7 +80,7 @@ feature 'User votes on reviews' do
        click_button 'downvote'
        click_button 'downvote'
 
-       expect(review.vote.value).to eq 0
+       expect(review.votes[0].value).to eq 0
     end
   end
 end
