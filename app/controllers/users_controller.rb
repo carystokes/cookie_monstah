@@ -53,7 +53,11 @@ class UsersController < ApplicationController
   def create_admin
     @user = User.find(params[:id])
     if current_user.admin
-      @user.admin = true
+      @user.update_attribute(:admin, true)
+      flash[:notice] = 'User is now an admin'
+      redirect_to @user
     end
   end
+
+
 end
