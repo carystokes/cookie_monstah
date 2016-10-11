@@ -52,8 +52,7 @@ class ReviewsController < ApplicationController
       @vote.value != 1 ? @vote.update(value: 1) : @vote.update(value: 0)
       redirect_to recipe_path(@recipe)
     else
-      flash[:notice] = "Please sign in"
-      redirect_to new_user_session_path
+      sign_in
     end
   end
 
@@ -66,9 +65,13 @@ class ReviewsController < ApplicationController
       @vote.value != -1 ? @vote.update(value: -1) : @vote.update(value: 0)
       redirect_to recipe_path(@recipe)
     else
-      flash[:notice] = "Please sign in"
-      redirect_to new_user_session_path
+      sign_in
     end
+  end
+
+  def sign_in
+    flash[:notice] = "Please sign in"
+    redirect_to new_user_session_path
   end
 
   private
