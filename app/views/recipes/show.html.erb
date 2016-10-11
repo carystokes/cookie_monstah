@@ -23,7 +23,12 @@ No one has reviewed this yet.
   Rating: <%= r.rating %>
   By: <%= r.user.first_name %> <%= r.user.last_name %>
   <%= r.body %>
-  <%= pluralize(r.votes.count, 'votes') %>
+
+  <% total = 0 %>
+  <% r.votes.each do |vote| %>
+    <% total += vote.value %>
+  <% end %>
+  <%= total %>
 
   <%= button_to 'upvote', upvote_review_path(r), method: :post %>
   <%= button_to 'downvote', downvote_review_path(r), method: :post %>

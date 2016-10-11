@@ -7,12 +7,6 @@ FactoryGirl.define do
     password 'password'
   end
 
-  factory :vote do
-    user
-    review
-    value 0
-  end
-
   factory :recipe do
     ingredients 'garlic, carrots, soup'
     instructions '1. combine the ingredients 2. eat soup'

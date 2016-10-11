@@ -1,26 +1,27 @@
 class VotesController < ApplicationController
 
-  def upvote
-    @review = Review.find(params[:id])
-    @vote = Vote.find_or_initialize_by(user: current_user)
+  def new
+    @vote = Vote.new
+  end
 
-    if user_signed_in?
-      @vote.value == 0 ? @vote.value = 1 : @vote.value = 0
+  def create
+    @vote = Vote.new(vote_params)
+    @vote.user = current_user
+    @vote.review = Review.find(params[:id])
+    @recipe = @review.recipe
+
+    if @vote.save
+      flash[:notice] = "Vote added successfully"
+      redirect_to @recipe
     else
-      flash[:notice] = "Please sign in"
-      redirect_to new_user_session_path
+      flash[:notice] = @recipe.errors.full_messages.join(', ')
+      redirect_to @recipe
     end
   end
 
-  def downvote
-    @review = Review.find(params[:id])
-    @vote = Vote.find_or_initialize_by(user: current_user)
+  private
 
-    if user_signed_in?
-      @vote.value == 0 ? @vote.value = -1 : @vote.value = 0
-    else
-      flash[:notice] = "Please sign in"
-      redirect_to new_user_session_path
-    end
+  def vote_params
+    params.require(:vote).permit(:user_id, :review_id, :value)
   end
 end
