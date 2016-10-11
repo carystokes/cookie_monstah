@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+
   has_many :recipes
   has_many :reviews
   has_many :votes

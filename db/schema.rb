@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161006190153) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",      null: false
+    t.string   "avatar"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20161006190153) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

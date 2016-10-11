@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   include PgSearch
+  mount_uploader :avatar, AvatarUploader
 
   belongs_to :user
   has_many :reviews
