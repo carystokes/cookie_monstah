@@ -5,3 +5,9 @@ Your app description, here.
 ![Coverage Status](https://coveralls.io/repos/carystokes/cookie_monstah/badge.png)
 
 Contributors: Cary Stokes, Larisa Bainton, Mike Hawley, Shana Hausman
+
+"Cookie Monster Recipe Site"
+
+This is a site dedicated to reviewing cookie recipes. A user can create, edit, and
+delete a recipe, and then other users can post reviews about that recipe.
+Users can up-vote and down-vote reviews based on whether or not they agree.

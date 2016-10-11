@@ -34,7 +34,7 @@ feature 'User writes a review' do
       click_button 'Add a Review'
 
       expect(page).to have_content 'Review created successfully'
-      expect(page).to have_content 'Rating: 4'
+      expect(page).to have_content '4'
       expect(page).to have_content 'I really like soup'
     end
 
@@ -48,7 +48,7 @@ feature 'User writes a review' do
       click_button 'Add a Review'
 
       expect(page).to have_content 'Review created successfully'
-      expect(page).to have_content 'Rating: 4'
+      expect(page).to have_content '4'
     end
 
     scenario 'I expect an error if I put a rating that is not between\
