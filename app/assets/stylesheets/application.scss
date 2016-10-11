@@ -19,6 +19,18 @@ body {
   }
 }
 
+.website_title {
+  :link {
+    color: $white;
+    text-decoration: none;
+  }
+
+  :visited {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
 .flash {
   background-color: $dark-grey;
   color: $white;
