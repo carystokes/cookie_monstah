@@ -10,6 +10,8 @@ gem 'pg_search'
 gem 'carrierwave', '= 0.11.2'
 gem 'mini_magick'
 gem 'fog'
+gem 'sendgrid-ruby'
+gem 'heroku'
 group :development, :test do
   gem 'rubocop'
   gem 'capybara'
