@@ -1,8 +1,5 @@
-require 'sendgrid-ruby'
-require 'json'
-include SendGrid
-
 class ReviewMailer < ApplicationMailer
+  include SendGrid
   def new_review(review)
     @review = review
 
@@ -10,5 +7,6 @@ class ReviewMailer < ApplicationMailer
       to: review.recipe.user.email,
       subject: "New Review for #{review.recipe.title}"
     )
+
   end
 end
