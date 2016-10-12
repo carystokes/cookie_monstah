@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   helper AvatarDefaultHelper
 
   def index
-    @users = User.all
+    if current_user.admin
+      @users = User.all
+    else
+      flash[:notice] = 'You are not authorized to view this page.'
+      redirect_to root_path
+    end
   end
 
   def show
@@ -21,8 +26,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if @user.update_attributes(user_params)
+    if params[:admin]
+      if current_user.admin
+        @user.update_attribute(:admin, true)
+        flash[:notice] = 'User is now an admin'
+        redirect_to @user
+      end
+    elsif @user.update_attributes(user_params)
       flash[:notice] = 'User edited successfully'
       redirect_to @user
     else
@@ -32,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if User.find(params[:id]) == current_user
+    if User.find(params[:id]) == current_user || current_user.admin
       User.find(params[:id]).destroy
       flash[:success] = "User deleted"
       redirect_to root_path

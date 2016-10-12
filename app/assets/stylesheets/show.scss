@@ -1,0 +1,96 @@
+.recipe-body {
+  background-color: $white;
+  border: $black solid 2px;
+  padding: 1rem 2rem 6rem;
+
+  h2 {
+    padding-bottom: -1rem;
+  }
+
+  .creator-name {
+    color: $medium-grey;
+    margin-left: 1rem;
+    margin-top: -2.5rem;
+  }
+
+  .description {
+    margin-left: 1rem;
+  }
+
+  h5 {
+    color: $dark-grey;
+    font-family: Quattrocento;
+    font-size: 1.3rem;
+    margin: 1rem;
+  }
+
+  p {
+    margin: 1rem;
+  }
+
+  .edit-delete-recipe {
+    color: $medium-grey;
+    float: right;
+    font-family: Quattrocento;
+    margin-top: -5.5rem;
+
+  }
+
+  .instructions {
+    border-left: $light-grey solid 4px;
+    float: right;
+    margin-top: -7.6rem;
+  }
+}
+
+.reviews-body {
+  background-color: $light-grey;
+  border: $black solid 2px;
+  padding: 1rem;
+
+  h3 {
+    margin: 0 3rem;
+    padding-bottom: 1rem;
+  };
+}
+
+.review {
+  background-color: $white;
+  border: $medium-grey solid 2px;
+  margin: 0.5rem 3rem;
+  padding: 1rem;
+
+  .name {
+    font-family: Quattrocento;
+    margin-top: -1rem;
+    padding: 2rem 1rem;
+  }
+
+  .body {
+    float: center;
+    margin-top: -3rem;
+    text-align: center;
+  }
+
+  .edit-delete-review {
+    color: $light-grey;
+    float: right;
+    font-family: Quattrocento;
+    font-size: 0.7rem;
+    margin-top: -2rem;
+  }
+
+  .rating {
+    margin-left: 3rem;
+    margin-top: -2rem;
+    padding: 1rem;
+  }
+}
+
+.add-review {
+  background-color: $dark-grey;
+  color: $white;
+  font-family: Quattrocento;
+  padding: 2rem 1rem;
+  text-align: center;
+}

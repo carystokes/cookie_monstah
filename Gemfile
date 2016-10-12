@@ -8,6 +8,10 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'pg_search'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem 'react-rails'
+gem 'mini_magick'
+gem 'fog'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'rubocop'
