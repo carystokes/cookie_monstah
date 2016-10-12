@@ -114,9 +114,11 @@ feature 'User writes a review' do
       expect(ActionMailer::Base.deliveries.last).to have_subject(
         "New Review for #{recipe.title}"
       )
-      expect(ActionMailer::Base.deliveries.last).to deliver_to(recipe.user.email)
+      expect(ActionMailer::Base.deliveries.last).to\
+       deliver_to(recipe.user.email)
       expect(ActionMailer::Base.deliveries.last).to have_body_text(
-        "Hello #{recipe.user.first_name}, #{user2.first_name} #{user2.last_name} has left a new review for your recipe #{recipe.title}. Check it out!"
+        "Hello #{recipe.user.first_name}, #{user2.first_name} #{user2.last_name}
+         has left a new review for your recipe #{recipe.title}. Check it out!"
       )
     end
   end
