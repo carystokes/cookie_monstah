@@ -168,7 +168,7 @@ module CarrierWave
         # [String] a path to file
         #
         attr_reader :path
-
+        attr_writer :new_content_type
         ##
         # Return all attributes from file
         #
@@ -223,13 +223,6 @@ module CarrierWave
         ##
         # Set non-default content-type header (default is file.content_type)
         #
-        # === Returns
-        #
-        # [String] returns new content type value
-        #
-        def content_type=(new_content_type)
-          @content_type = new_content_type
-        end
 
         ##
         # Remove the file from service
