@@ -400,7 +400,7 @@ module CarrierWave
         #
         def filename(options = {})
           return unless file_url == url(options)
-          CGI.unescape(file_url.split('?').first).gsub(/.*\/(.*?$)/, '\1')
+          CGI.unescape(file_url.split('?').first).gsub(%r{.*\/(.*?$)}, '\1')
         end
 
         ##
