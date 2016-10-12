@@ -222,7 +222,6 @@ module CarrierWave
 
         ##
         # Set non-default content-type header (default is file.content_type)
-        #
 
         ##
         # Remove the file from service
@@ -233,7 +232,7 @@ module CarrierWave
         #
         def delete
           # avoid a get by just using local reference
-          directory.files.new(:key => path).destroy
+          directory.files.new(key: path).destroy
         end
 
         ##
@@ -257,8 +256,8 @@ module CarrierWave
         #
         def headers
           location = caller.first
-          warning = "[yellow][WARN] headers is deprecated, use attributes instead[/]"
-          warning << " [light_black](#{location})[/]"
+          warning = '[yellow][WARN] headers is deprecated, use attributes instead[/]'
+          warning << ' [light_black](#{location})[/]'
           Formatador.display_line(warning)
           attributes
         end
@@ -295,7 +294,7 @@ module CarrierWave
         #
         # [Boolean] true if file exists or false
         def exists?
-          !!directory.files.head(path)
+          directory.files.head(path)
         end
 
         ##
@@ -346,7 +345,7 @@ module CarrierWave
               if @uploader.fog_credentials.key?(:endpoint)
                 "#{@uploader.fog_credentials[:endpoint]}/#{@uploader.fog_directory}/#{encoded_path}"
               else
-                protocol = @uploader.fog_use_ssl_for_aws ? "https" : "http"
+                protocol = @uploader.fog_use_ssl_for_aws ? 'https' : 'http'
                 # if directory is a valid subdomain, use that style for access
                 if @uploader.fog_directory.to_s =~ %r{^(?:[a-z]|\d(?!\d{0,2}(?:\d{1,3}){3}$))(?:[a-z0-9\.]|(?![\-])|\-(?![\.])){1,61}[a-z0-9]$}
                   "#{protocol}://#{@uploader.fog_directory}.s3.amazonaws.com/#{encoded_path}"
