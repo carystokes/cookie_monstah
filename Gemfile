@@ -15,7 +15,6 @@ gem 'sendgrid-ruby'
 gem 'heroku'
 gem 'fog-aws'
 
-
 group :development, :test do
   gem 'mailcatcher'
   gem 'rubocop'
