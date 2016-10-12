@@ -9,13 +9,19 @@ module CarrierWave
     # You need to setup some options to configure your usage:
     #
     # [:fog_credentials]  host info and credentials for service
-    # [:fog_directory]    specifies name of directory to store data in, assumed to already exist
+    # [:fog_directory]    specifies name of directory to store data in, assumed
+    # to already exist
     #
-    # [:fog_attributes]                   (optional) additional attributes to set on files
-    # [:fog_public]                       (optional) public readability, defaults to true
-    # [:fog_authenticated_url_expiration] (optional) time (in seconds) that authenticated urls
-    #   will be valid, when fog_public is false and provider is AWS or Google, defaults to 600
-    # [:fog_use_ssl_for_aws]              (optional) #public_url will use https for the AWS generated URL]
+    # [:fog_attributes]                   (optional) additional attributes to
+    # set on files
+    # [:fog_public]                       (optional) public readability,
+    # defaults to true
+    # [:fog_authenticated_url_expiration] (optional) time (in seconds) that
+    # authenticated urls
+    #   will be valid, when fog_public is false and provider is AWS or Google,
+    # defaults to 600
+    # [:fog_use_ssl_for_aws]              (optional) #public_url will use https
+    # for the AWS generated URL]
     #
     #
     # AWS credentials contain the following keys:
@@ -23,7 +29,8 @@ module CarrierWave
     # [:aws_access_key_id]
     # [:aws_secret_access_key]
     # [:region]                 (optional) defaults to 'us-east-1'
-    #   :region should be one of ['eu-west-1', 'us-east-1', 'ap-southeast-1', 'us-west-1', 'ap-northeast-1', 'eu-central-1']
+    #   :region should be one of ['eu-west-1', 'us-east-1', 'ap-southeast-1',
+    # 'us-west-1', 'ap-northeast-1', 'eu-central-1']
     #
     #
     # Google credentials contain the following keys:
@@ -456,8 +463,6 @@ module CarrierWave
           {'x-amz-acl' => @uploader.fog_public ? 'public-read' : 'private'}
         end
       end
-
     end # Fog
-
   end # Storage
 end # CarrierWave
