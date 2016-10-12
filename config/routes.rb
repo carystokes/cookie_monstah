@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :reviews, only: [:index, :create]
   end
+  resources :reviews, only: [:edit, :update, :destroy] do
+    member do
+      post 'upvote'
+      post 'downvote'
+    end
+  end
 
-  resources :reviews, only: [:edit, :update, :destroy]
-  
   devise_for :views
   devise_for :users
   resources :users
