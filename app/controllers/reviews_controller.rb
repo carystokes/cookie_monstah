@@ -44,6 +44,37 @@ class ReviewsController < ApplicationController
     redirect_to recipe
   end
 
+  def upvote
+    @review = Review.find(params[:id])
+    @recipe = @review.recipe
+    @vote = Vote.find_or_create_by(user: current_user, review_id: @review.id)
+
+    if user_signed_in?
+      @vote.value != 1 ? @vote.update(value: 1) : @vote.update(value: 0)
+      redirect_to recipe_path(@recipe)
+    else
+      sign_in
+    end
+  end
+
+  def downvote
+    @review = Review.find(params[:id])
+    @vote = Vote.find_or_initialize_by(user: current_user, review_id: @review.id)
+    @recipe = @review.recipe
+
+    if user_signed_in?
+      @vote.value != -1 ? @vote.update(value: -1) : @vote.update(value: 0)
+      redirect_to recipe_path(@recipe)
+    else
+      sign_in
+    end
+  end
+
+  def sign_in
+    flash[:notice] = "Please sign in"
+    redirect_to new_user_session_path
+  end
+
   private
 
   def review_params

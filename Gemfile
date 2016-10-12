@@ -7,11 +7,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'pg_search'
+gem 'react-rails'
 gem 'carrierwave', '= 0.11.2'
 gem 'mini_magick'
 gem 'fog'
 gem 'sendgrid-ruby'
 gem 'heroku'
+
 group :development, :test do
   gem 'rubocop'
   gem 'capybara'
