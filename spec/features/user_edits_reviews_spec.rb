@@ -58,7 +58,7 @@ feature 'user can edit reviews' do
       visit recipe_path(recipe)
       click_link 'Edit Review'
 
-      fill_in 'Rating', with: ""
+      fill_in 'Rating', with: ''
       fill_in 'Body', with: 'I don\'t like numbers I\'d rather\
        just use my words.'
 
