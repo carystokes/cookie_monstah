@@ -82,5 +82,4 @@
 <% if current_user.try(:admin?) %>
   <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
 <% end %>
-
 </div>

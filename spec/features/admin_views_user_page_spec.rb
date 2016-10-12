@@ -32,7 +32,7 @@ feature 'admin views user page do' do
       user_sign_in(user2)
       visit user_path(user)
       click_button 'Create Admin'
-      
+
       expect(user.admin).to be(true)
     end
   end
