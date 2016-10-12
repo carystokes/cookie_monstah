@@ -350,7 +350,7 @@ module CarrierWave
             case @uploader.fog_credentials[:provider].to_s
             when 'AWS'
               # check if some endpoint is set in fog_credentials
-              if @uploader.fog_credentials.has_key?(:endpoint)
+              if @uploader.fog_credentials.key?(:endpoint)
                 "#{@uploader.fog_credentials[:endpoint]}/#{@uploader.fog_directory}/#{encoded_path}"
               else
                 protocol = @uploader.fog_use_ssl_for_aws ? "https" : "http"
@@ -419,7 +419,7 @@ module CarrierWave
           CarrierWave::Storage::Fog::File.new(@uploader, @base, new_path)
         end
 
-      private
+        private
 
         ##
         # connection to service
@@ -460,7 +460,7 @@ module CarrierWave
         end
 
         def acl_header
-          {'x-amz-acl' => @uploader.fog_public ? 'public-read' : 'private'}
+          { 'x-amz-acl' => @uploader.fog_public ? 'public-read' : 'private' }
         end
       end
     end # Fog
