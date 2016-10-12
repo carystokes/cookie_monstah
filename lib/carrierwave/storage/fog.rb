@@ -255,7 +255,6 @@ module CarrierWave
         # [Hash] attributes from file
         #
         def headers
-          location = caller.first
           warning = '[yellow][WARN] headers is deprecated, use attributes instead[/]'
           warning << ' [light_black](#{location})[/]'
           Formatador.display_line(warning)
