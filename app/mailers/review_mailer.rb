@@ -7,6 +7,5 @@ class ReviewMailer < ApplicationMailer
       to: review.recipe.user.email,
       subject: "New Review for #{review.recipe.title}"
     )
-
   end
 end
