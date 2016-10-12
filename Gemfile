@@ -7,12 +7,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'pg_search'
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'react-rails'
-gem 'carrierwave', '= 0.11.2'
 gem 'mini_magick'
 gem 'fog'
 gem 'sendgrid-ruby'
 gem 'heroku'
+gem 'fog-aws'
+
 
 group :development, :test do
   gem 'mailcatcher'
