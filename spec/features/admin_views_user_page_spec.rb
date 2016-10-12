@@ -33,7 +33,7 @@ feature 'admin views user page do' do
       visit user_path(user)
       click_button 'Create Admin'
 
-      expect(user.admin).to be(true)
+      expect(user.reload.admin).to be(true)
     end
   end
 end
