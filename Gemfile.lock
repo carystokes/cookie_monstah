@@ -77,8 +77,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    domain_name (0.5.20160826)
-      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
@@ -239,8 +237,6 @@ GEM
       excon (~> 0.45)
       multi_json (~> 1.8)
     htmlentities (4.3.4)
-    http-cookie (1.0.3)
-      domain_name (~> 0.5)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -421,9 +417,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.2)
     unicode-display_width (1.1.1)
     valid_attribute (2.0.0)
     warden (1.2.6)
@@ -447,7 +440,6 @@ DEPENDENCIES
   fog
   fog-aws
   heroku
-  http-cookie
   jquery-rails
   launchy
   mailcatcher
@@ -458,7 +450,6 @@ DEPENDENCIES
   rails (~> 4.2.7.1)
   rails_12factor
   react-rails
-  rest-client
   rspec-rails (~> 3.0)
   rubocop
   sass-rails (~> 5.0)
