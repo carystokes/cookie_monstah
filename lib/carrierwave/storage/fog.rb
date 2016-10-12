@@ -339,7 +339,7 @@ module CarrierWave
         #
         def public_url
           encoded_path = encode_path(path)
-          if host = @uploader.asset_host
+          if host == @uploader.asset_host
             if host.respond_to? :call
               "#{host.call(self)}/#{encoded_path}"
             else
@@ -367,7 +367,7 @@ module CarrierWave
               "https://storage.googleapis.com/#{@uploader.fog_directory}/#{encoded_path}"
             else
               # avoid a get by just using local reference
-              directory.files.new(:key => path).public_url
+              directory.files.new(key: path).public_url
             end
           end
         end
@@ -399,7 +399,7 @@ module CarrierWave
         # [NilClass] no file name available
         #
         def filename(options = {})
-          return unless file_url = url(options)
+          return unless file_url == url(options)
           CGI.unescape(file_url.split('?').first).gsub(/.*\/(.*?$)/, '\1')
         end
 
@@ -442,8 +442,8 @@ module CarrierWave
         def directory
           @directory ||= begin
             connection.directories.new(
-              :key    => @uploader.fog_directory,
-              :public => @uploader.fog_public
+              key: @uploader.fog_directory,
+              public: @uploader.fog_public
             )
           end
         end
