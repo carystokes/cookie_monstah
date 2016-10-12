@@ -27,5 +27,44 @@ feature 'user can edit reviews' do
 
       expect(page).not_to have_link('Edit Review')
     end
+
+    scenario 'I cannot edit the rating to be an integer not between 1 and 5' do
+      user_sign_in(user)
+      visit recipe_path(recipe)
+      click_link 'Edit Review'
+
+      fill_in 'Rating', with: 27
+      fill_in 'Body', with: 'THIS IS THE BEST COOKIE SOUP EVER!!!!!'
+
+      click_button 'Save Review'
+
+      expect(page).to have_content 'Rating must be between 1 - 5'
+    end
+
+    scenario 'I expect an error if I put a rating that is not an integer' do
+      user_sign_in(user)
+      visit recipe_path(recipe)
+      click_link 'Edit Review'
+
+      fill_in 'Rating', with: 3.7
+
+      click_button 'Save Review'
+
+      expect(page).to have_content 'Rating must be an integer'
+    end
+
+    scenario 'I expect an error if I remove the rating' do
+      user_sign_in(user)
+      visit recipe_path(recipe)
+      click_link 'Edit Review'
+
+      fill_in 'Rating', with: ''
+      fill_in 'Body', with: 'I don\'t like numbers I\'d rather\
+       just use my words.'
+
+      click_button 'Save Review'
+
+      expect(page).to have_content 'Rating is not a number'
+    end
   end
 end

@@ -3,7 +3,9 @@
   <div class="edit-delete-recipe">
     <% if @user == current_user %>
       <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
-      <br>
+    <% end %>
+    <br>
+    <% if @user == current_user || current_user.try(:admin?) %>
       <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
     <% end %>
   </div>
@@ -72,17 +74,16 @@
     <br>
   <% end %>
 
-  <div class="add-review">
-    <h3>Add a Review!</h3>
-    <%= form_for [@recipe, @review] do |f| %>
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
-    <br>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-    <br>
-    <%= f.submit "Add a Review" %>
-    <% end %>
-  </div>
-
+<div class="add-review">
+  <h3>Add a Review!</h3>
+  <%= form_for [@recipe, @review] do |f| %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <br>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit "Add a Review" %>
+  <% end %>
+</div>
 </div>
