@@ -318,10 +318,10 @@ module CarrierWave
             fog_file = new_file.to_file
             @content_type ||= new_file.content_type
             @file = directory.files.create({
-              :body         => (fog_file ? fog_file : new_file).read,
-              :content_type => @content_type,
-              :key          => path,
-              :public       => @uploader.fog_public
+              body: (fog_file ? fog_file : new_file).read,
+              content_type: @content_type,
+              key: path,
+              public: @uploader.fog_public
             }.merge(@uploader.fog_attributes))
             fog_file.close if fog_file && !fog_file.closed?
           end
@@ -355,7 +355,7 @@ module CarrierWave
               else
                 protocol = @uploader.fog_use_ssl_for_aws ? "https" : "http"
                 # if directory is a valid subdomain, use that style for access
-                if @uploader.fog_directory.to_s =~ /^(?:[a-z]|\d(?!\d{0,2}(?:\d{1,3}){3}$))(?:[a-z0-9\.]|(?![\-])|\-(?![\.])){1,61}[a-z0-9]$/
+                if @uploader.fog_directory.to_s =~ %r{^(?:[a-z]|\d(?!\d{0,2}(?:\d{1,3}){3}$))(?:[a-z0-9\.]|(?![\-])|\-(?![\.])){1,61}[a-z0-9]$}
                   "#{protocol}://#{@uploader.fog_directory}.s3.amazonaws.com/#{encoded_path}"
                 else
                   # directory is not a valid subdomain, so use path style for access
