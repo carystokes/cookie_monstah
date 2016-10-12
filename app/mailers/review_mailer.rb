@@ -1,4 +1,4 @@
-require 'sendgrid-ruby'
+require 'sendgrid_ruby'
 require 'json'
 include SendGrid
 
