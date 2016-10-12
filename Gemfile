@@ -15,6 +15,7 @@ gem 'sendgrid-ruby'
 gem 'heroku'
 
 group :development, :test do
+  gem 'mailcatcher'
   gem 'rubocop'
   gem 'capybara'
   gem 'factory_girl_rails'
