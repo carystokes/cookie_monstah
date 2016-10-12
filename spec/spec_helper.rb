@@ -1,5 +1,6 @@
 require 'coveralls'
 require 'support/user_sign_in_helper'
+require 'email_spec'
 
 Coveralls.wear!('rails')
 
@@ -18,4 +19,7 @@ RSpec.configure do |config|
   config.before :each do
     ActionMailer::Base.deliveries.clear
   end
+
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 end

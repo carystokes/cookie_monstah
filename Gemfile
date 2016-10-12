@@ -23,6 +23,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'dotenv-rails'
+  gem 'email_spec'
 end
 
 group :test do
