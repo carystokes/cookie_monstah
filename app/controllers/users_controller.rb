@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  helper AvatarDefaultHelper
 
   def index
     if current_user.admin

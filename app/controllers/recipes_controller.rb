@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-  helper AvatarDefaultHelper
   def index
     if params[:search] == ''
       flash.now[:alert] = 'Please specify a search phrase.'

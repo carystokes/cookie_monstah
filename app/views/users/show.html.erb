@@ -1,7 +1,11 @@
 <h1><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
 
-<img id="profile_image" src=<%= @user.avatar %>  />
 
+<% if @user.avatar.present?  %>
+   <%= image_tag @user.avatar, id: "profile_image" %>
+<% else %>
+   <%= image_tag 'user_default.gif', id: "profile_image" %>
+<% end %>
 <h3>First name: <%= @user.first_name %></h3>
 <h3>Last name: <%= @user.last_name %></h3>
 <h3>Email: <%= @user.email %></h3>
