@@ -1,5 +1,6 @@
 require 'coveralls'
 require 'support/user_sign_in_helper'
+require 'email_spec'
 
 Coveralls.wear!('rails')
 
@@ -14,4 +15,11 @@ RSpec.configure do |config|
 
   config.include UserSignInHelper
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before :each do
+    ActionMailer::Base.deliveries.clear
+  end
+
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 end

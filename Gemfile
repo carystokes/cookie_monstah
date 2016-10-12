@@ -11,9 +11,12 @@ gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'react-rails'
 gem 'mini_magick'
 gem 'fog'
+gem 'sendgrid-ruby'
+gem 'heroku'
 gem 'fog-aws'
 
 group :development, :test do
+  gem 'mailcatcher'
   gem 'rubocop'
   gem 'capybara'
   gem 'factory_girl_rails'
@@ -22,6 +25,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'dotenv-rails'
+  gem 'email_spec'
 end
 
 group :test do

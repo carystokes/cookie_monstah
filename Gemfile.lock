@@ -46,7 +46,7 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.11)
     builder (3.2.2)
-    capybara (2.10.0)
+    capybara (2.10.1)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -67,6 +67,7 @@ GEM
       term-ansicolor (~> 1.3)
       thor (~> 0.19.1)
       tins (>= 1.6.0, < 2)
+    daemons (1.2.4)
     database_cleaner (1.5.3)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -80,7 +81,12 @@ GEM
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
       railties (>= 4.0, < 5.1)
+    email_spec (2.1.0)
+      htmlentities (~> 4.3.3)
+      launchy (~> 2.1)
+      mail (~> 2.6.3)
     erubis (2.7.0)
+    eventmachine (1.0.9.1)
     excon (0.53.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
@@ -218,6 +224,19 @@ GEM
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    heroku (3.43.12)
+      heroku-api (= 0.4.2)
+      launchy (= 2.4.3)
+      multi_json (= 1.11.2)
+      net-ssh (= 2.9.2)
+      net-ssh-gateway (= 1.2.0)
+      netrc (= 0.10.3)
+      rest-client (= 1.6.8)
+      rubyzip (= 1.1.7)
+    heroku-api (0.4.2)
+      excon (~> 0.45)
+      multi_json (~> 1.8)
+    htmlentities (4.3.4)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -232,14 +251,24 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mailcatcher (0.6.5)
+      eventmachine (= 1.0.9.1)
+      mail (~> 2.3)
+      rack (~> 1.5)
+      sinatra (~> 1.2)
+      skinny (~> 0.2.3)
+      sqlite3 (~> 1.3)
+      thin (~> 1.5.0)
     method_source (0.8.2)
-    mime-types (3.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types (1.25.1)
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
-    multi_json (1.12.1)
+    multi_json (1.11.2)
+    net-ssh (2.9.2)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
+    netrc (0.10.3)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
@@ -258,6 +287,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     rack (1.6.4)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.7.1)
@@ -295,7 +326,9 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
-    react-rails (1.8.2)
+    rdoc (4.2.2)
+      json (~> 1.4)
+    react-rails (1.9.0)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -304,6 +337,9 @@ GEM
       tilt
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rest-client (1.6.8)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -328,6 +364,8 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
+    ruby_http_client (3.0.0)
+    rubyzip (1.1.7)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -335,6 +373,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sendgrid-ruby (4.0.4)
+      ruby_http_client (~> 3.0.0)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
@@ -346,6 +386,13 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    sinatra (1.4.7)
+      rack (~> 1.5)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    skinny (0.2.4)
+      eventmachine (~> 1.0.0)
+      thin (>= 1.5, < 1.7)
     slop (3.6.0)
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
@@ -354,8 +401,13 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.3.12)
     term-ansicolor (1.4.0)
       tins (~> 1.0)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
@@ -383,11 +435,14 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  email_spec
   factory_girl_rails
   fog
   fog-aws
+  heroku
   jquery-rails
   launchy
+  mailcatcher
   mini_magick
   pg (~> 0.15)
   pg_search
@@ -398,6 +453,7 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   rubocop
   sass-rails (~> 5.0)
+  sendgrid-ruby
   shoulda
   uglifier (>= 1.3.0)
   valid_attribute

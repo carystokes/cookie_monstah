@@ -4,6 +4,7 @@ require 'rails_helper'
 feature 'User writes a review' do
   let!(:user2) { FactoryGirl.create(:user, first_name: 'Fran') }
   let!(:recipe) { FactoryGirl.create(:recipe) }
+
   context 'As a user' do
     scenario 'I can see reviews on the Recipe show page' do
       review = Review.create(
@@ -95,6 +96,30 @@ feature 'User writes a review' do
       click_button 'Add a Review'
 
       expect(page).to have_content 'Rating is not a number'
+    end
+
+    scenario 'I expect to get an email when my product is reviewed' do
+      ActionMailer::Base.deliveries = []
+      user_sign_in(user2)
+      visit recipe_path(recipe)
+
+      fill_in 'Rating', with: 4
+
+      click_button 'Add a Review'
+      fill_in 'Body', with: 'I don\'t like numbers I\'d rather\
+       just use my words.'
+
+      expect(page).to have_content 'Review created successfully'
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect(ActionMailer::Base.deliveries.last).to have_subject(
+        "New Review for #{recipe.title}"
+      )
+      expect(ActionMailer::Base.deliveries.last).to\
+       deliver_to(recipe.user.email)
+      expect(ActionMailer::Base.deliveries.last).to have_body_text(
+        "Hello #{recipe.user.first_name}, #{user2.first_name} #{user2.last_name}
+         has left a new review for your recipe #{recipe.title}. Check it out!"
+      )
     end
   end
 end
