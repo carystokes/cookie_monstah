@@ -45,12 +45,16 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       flash[:notice] = @recipe.errors.full_messages.join(', ')
-      render action: 'new'
+      render 'new'
     end
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
+    if current_user != @recipe.user
+      flash[:notice] = 'You cannot edit this recipe'
+      redirect_to @recipe
+    end
   end
 
   def update

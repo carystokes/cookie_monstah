@@ -90,18 +90,18 @@ feature 'User edits recipe' do
       expect(page).to have_content 'Ingredients can\'t be blank'
     end
 
-    # scenario 'There is no link to edit recipes made by other people' do
-    #   user_sign_in(user2)
-    #   visit recipe_path(recipe)
-    #
-    #   expect(page).not_to have_link 'Edit Recipe'
-    # end
-    #
-    # scenario 'I cannot edit recipes made by other people' do
-    #   user_sign_in(user2)
-    #   visit edit_recipe_path(recipe)
-    #
-    #   expect(page).to have_content('You cannot edit this recipe')
-    # end
+    scenario 'There is no link to edit recipes made by other people' do
+      user_sign_in(user2)
+      visit recipe_path(recipe)
+
+      expect(page).not_to have_link 'Edit Recipe'
+    end
+
+    scenario 'I cannot edit recipes made by other people' do
+      user_sign_in(user2)
+      visit edit_recipe_path(recipe)
+
+      expect(page).to have_content('You cannot edit this recipe')
+    end
   end
 end

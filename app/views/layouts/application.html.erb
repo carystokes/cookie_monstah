@@ -12,6 +12,9 @@
   <header>
     <div class="website-title">
       <h1><%= link_to "Cookie Monster's Recipes", recipes_path %></h1>
+      <% if current_user.try(:admin?) %>
+        <%= link_to "View All Users", users_path %>
+      <% end %>
     </div>
 
     <% flash.each do |key, value| %>

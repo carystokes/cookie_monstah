@@ -38,6 +38,16 @@ feature 'User writes a review' do
       expect(page).to have_content 'I really like soup'
     end
 
+    scenario 'if I am not logged in, I cannot create a review' do
+      visit recipe_path(recipe)
+      fill_in 'Rating', with: 4
+      fill_in 'Body', with: 'I really like soup'
+
+      click_button 'Add a Review'
+
+      expect(page).to have_content 'Please sign in'
+    end
+
     scenario 'I must have a rating to create a review and optionally\
      a description' do
       user_sign_in(user2)
