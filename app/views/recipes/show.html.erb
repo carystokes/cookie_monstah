@@ -10,11 +10,8 @@
     <% end %>
   </div>
   <div class="creator-name">
-    <% if @recipe.avatar.present?  %>
-       <%= image_tag @recipe.avatar, id: "recipe_image" %>
-    <% else %>
-       <%= image_tag 'cookie_default.jpg', id: "recipe_image" %>
-    <% end %>    <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+    <img id="recipe_image" src=<%= @recipe.avatar %>  />
+    <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
     <%= link_to full_name, user_path(@recipe.user.id) %>
   </div>
   <br>
