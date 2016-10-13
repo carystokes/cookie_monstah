@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
       end
     else
       flash[:notice] = 'You are not authorized to edit this review'
-      redirect_to new_user_session_path
+      redirect_to @review.recipe
     end
   end
 
@@ -51,7 +51,8 @@ class ReviewsController < ApplicationController
       flash[:notice] = 'Review successfully deleted'
       redirect_to recipe
     else
-      sign_in
+      flash[:notice] = 'You are not authorized to edit this review'
+      redirect_to @review.recipe
     end
   end
 
