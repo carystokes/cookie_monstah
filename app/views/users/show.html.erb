@@ -14,8 +14,13 @@
     <h3>Last name: <%= @user.last_name %></h3>
     <h3>Email: <%= @user.email %></h3>
     <div class="edit-and-delete row">
+      <% if @user == current_user %>
+        <%= button_to 'Edit', edit_user_path(@user), method: :get %>
+      <% end %>
+      <% if @user == current_user || current_user.try(:admin?) %>
+        <%= button_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
+      <% end %>
       <% if current_user.try(:admin?) %>
-         <%= button_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
          <% if @user.admin %>
             <%= button_to "Remove Admin", @user, method: :patch, params: { admin: false } %>
          <% else %>
@@ -25,14 +30,9 @@
     </div>
   </div>
 </div>
-<% if @user == current_user %>
-   <%= button_to 'Edit', edit_user_path(@user), method: :get %>
-   <%= button_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
-<% end %>
 </div>
 <div class="user-recipes">
   <h1>Your Recipes</h1>
-
   <ul>
     <% @recipes.each do |recipe| %>
        <li><%= link_to recipe.title, recipe %></li>
