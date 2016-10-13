@@ -21,6 +21,10 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    if current_user != @review.user
+      flash[:notice] = 'You cannot edit this review'
+      redirect_to @review.recipe
+    end
   end
 
   def update
@@ -41,13 +45,13 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     recipe = review.recipe
-    if review.user == current_user
+    if review.user == current_user || current_user.admin
       review.destroy
       flash[:notice] = 'Review successfully deleted'
+      redirect_to recipe
     else
       sign_in
     end
-    redirect_to recipe
   end
 
   def upvote
