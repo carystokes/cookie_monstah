@@ -14,7 +14,8 @@ class ReviewsController < ApplicationController
       end
       redirect_to @recipe
     else
-      sign_in
+      flash[:notice] = 'Please sign in'
+      redirect_to new_user_session_path
     end
   end
 
@@ -37,7 +38,8 @@ class ReviewsController < ApplicationController
         render 'edit'
       end
     else
-      sign_in
+      flash[:notice] = 'You are not authorized to edit this review'
+      redirect_to new_user_session_path
     end
   end
 
