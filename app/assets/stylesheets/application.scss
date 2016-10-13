@@ -4,6 +4,7 @@
 @import "./index";
 @import "./new";
 @import './top-bar';
+@import './user_show';
 
 #body {
   background-color: $pink;
@@ -19,6 +20,10 @@ body {
   :visited {
     color: $black;
     text-decoration: none;
+  }
+
+  a:hover {
+    color: $medium-grey;
   }
 }
 

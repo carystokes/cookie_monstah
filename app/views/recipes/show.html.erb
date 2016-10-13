@@ -1,5 +1,11 @@
 <div class="recipe-body">
-  <img class = "small-3 columns" id="recipe_image" src=<%= @recipe.avatar %>  />
+
+<% if @recipe.avatar.present?  %>
+   <%= image_tag @recipe.avatar, class: "small-3 columns", id: "recipe_image" %>
+<% else %>
+   <%= image_tag 'cookie_default.jpg', class: "small-3 columns", id: "recipe_image" %>
+<% end %>
+
   <h2 class="recipe-title small-9 columns"><%= @recipe.title %></h2>
   <div class="row">
     <div class="small-3 columns">
