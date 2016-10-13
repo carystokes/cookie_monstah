@@ -16,6 +16,7 @@ feature 'search' do
 
       fill_in 'search', with: 'spider'
       click_button 'Search'
+      expect(page).to have_content('Check out your search matches below!')
       expect(page).to have_content('Spider Donuts')
       expect(page).to have_content('Creepy Cookies')
       expect(page).not_to have_content('Simple Recipe')
@@ -28,6 +29,13 @@ feature 'search' do
       click_button 'Search'
       expect(page).to have_content('Sorry, there were no matches.')
       expect(page).not_to have_content('Simple Recipe')
+    end
+
+    scenario 'user must fill in a search phrase' do
+      visit root_path
+      click_button 'Search'
+
+      expect(page).to have_content('Please specify a search phrase')
     end
   end
 end

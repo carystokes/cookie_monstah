@@ -41,10 +41,23 @@ feature 'user page' do
     fill_in 'First name', with: 'Carl'
     click_button 'Save Changes'
 
+    expect(page).to have_content('User edited successfully')
     expect(page).to have_content('Carl Smith')
     expect(page).not_to have_content('Jon')
+  end
 
-    click_button 'Edit'
+  scenario 'a logged in user must provide valid information' do
+    user_sign_in(user)
+    visit edit_user_path(user)
+    fill_in 'First name', with: ''
+    click_button 'Save Changes'
+    
+    expect(page).to have_content('First name can\'t be blank')
+  end
+
+  scenario 'a logged in user can upload a userpic' do
+    user_sign_in(user)
+    visit edit_user_path(user)
 
     page.attach_file('Avatar', Rails.root +
       'spec/fixtures/Cookie-Monster-Cookies.jpg')

@@ -27,16 +27,24 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:admin]
       if current_user.admin
-        @user.update_attribute(:admin, true)
+        @user.update_attribute(:admin, params[:admin])
         flash[:notice] = 'User is now an admin'
         redirect_to @user
+      else
+        flash[:notice] = 'You do not have permission to edit this user'
+        redirect_to new_user_session_path
       end
-    elsif @user.update_attributes(user_params)
-      flash[:notice] = 'User edited successfully'
-      redirect_to @user
+    elsif @user == current_user
+      if @user.update_attributes(user_params)
+        flash[:notice] = 'User edited successfully'
+        redirect_to @user
+      else
+        flash[:notice] = @user.errors.full_messages.join(', ')
+        render 'edit'
+      end
     else
-      flash[:notice] = @user.errors.full_messages.join(', ')
-      render 'edit'
+      flash[:notice] = 'You do not have permission to edit this user'
+      redirect_to new_user_session_path
     end
   end
 
@@ -45,6 +53,9 @@ class UsersController < ApplicationController
       User.find(params[:id]).destroy
       flash[:success] = "User deleted"
       redirect_to root_path
+    else
+      flash[:notice] = 'You do not have permission to edit this user'
+      redirect_to new_user_session_path
     end
   end
 

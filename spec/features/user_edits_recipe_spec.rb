@@ -9,7 +9,7 @@ feature 'User edits recipe' do
     scenario 'I can navigate to an edit page of my own recipe' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_link 'Edit Recipe'
+      click_button 'Edit Recipe'
 
       expect(page).to have_content 'Edit Recipe'
     end

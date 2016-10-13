@@ -9,7 +9,7 @@ feature 'User deletes recipe' do
     scenario 'I can delete a recipe made by me' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_link 'Delete Recipe'
+      click_button 'Delete Recipe'
 
       expect(page).not_to have_content(recipe.title)
       expect(page).to have_content 'Recipe deleted'

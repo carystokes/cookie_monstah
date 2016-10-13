@@ -9,11 +9,10 @@ class ReviewsController < ApplicationController
       if @review.save
         flash[:notice] = 'Review created successfully'
         ReviewMailer.new_review(@review).deliver_later
-        redirect_to recipe_path(@recipe)
       else
         flash[:notice] = @review.errors.full_messages.join(', ')
-        redirect_to recipe_path(@recipe)
       end
+      redirect_to @recipe
     else
       flash[:notice] = 'Please sign in'
       redirect_to new_user_session_path
@@ -22,26 +21,33 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    if current_user != @review.user
+      flash[:notice] = 'You cannot edit this review'
+      redirect_to @review.recipe
+    end
   end
 
   def update
     @review = Review.find(params[:id])
-
-    if @review.update_attributes(review_params)
-      flash[:notice] = 'Review successfully edited'
-      redirect_to @review.recipe
-    else
-      flash[:notice] = @review.errors.full_messages.join(', ')
-      render 'edit'
+    if @review.user == current_user
+      if @review.update_attributes(review_params)
+        flash[:notice] = 'Review successfully edited'
+        redirect_to @review.recipe
+      else
+        flash[:notice] = @review.errors.full_messages.join(', ')
+        render 'edit'
+      end
     end
   end
 
   def destroy
     review = Review.find(params[:id])
     recipe = review.recipe
-    review.destroy
-    flash[:success] = 'Review successfully deleted'
-    redirect_to recipe
+    if review.user == current_user || current_user.admin
+      review.destroy
+      flash[:notice] = 'Review successfully deleted'
+      redirect_to recipe
+    end
   end
 
   def upvote
