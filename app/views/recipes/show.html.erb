@@ -15,7 +15,7 @@
     <% else %>
        <%= image_tag 'cookie_default.jpg', id: "recipe_image" %>
     <% end %>
-    <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+    <% full_name = "#{@recipe.user.first_name  @recipe.user.last_name}" %>
     <%= link_to full_name, user_path(@recipe.user.id) %>
   </div>
   <br>
