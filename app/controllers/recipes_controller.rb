@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
         flash.now[:notice] = 'Check out your search matches below!'
       end
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.all.order(created_at: :desc)
     end
     if user_signed_in?
       @current_user = current_user
