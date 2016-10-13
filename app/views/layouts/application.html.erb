@@ -13,6 +13,10 @@
   <div id="container-body">
   <header>
 
+    <div class= "website-title">
+        <h1 id="web-title"><%= link_to "Cookie Monster's Recipes", recipes_path %></h1>
+    </div>
+
     <% flash.each do |key, value| %>
     <div class="flash">
       <%= value %>
@@ -20,46 +24,33 @@
     <% end %>
 
     <nav id = "top-bar" data-topbar role="navigation">
-      <ul class = "title-area">
-        <li class = "website-title">
-          <h1 id="web-title"><%= link_to "Cookie Monster's Recipes", recipes_path %></h1>
-        </li>
-      </ul>
-
-      <section class = "top-bar-section">
-        <ul class = "left">
-          <li>
-            <div class="sign-in">
-              <% if user_signed_in? %>
-                <%= link_to "Log Off", destroy_user_session_path, method: :get %><br>
-                <%= link_to "My Account", user_path(current_user) %>
-              <% else %>
-                <%= link_to "Sign Up", new_user_registration_path %><br>
-                <%= link_to "Log In", new_user_session_path %>
-              <% end %>
-            </div>
-          </li>
-          <li>
-            <div class="search">
+       <ul class = "menu">
+        <li>
+          <div class="sign-in inline-block">
+            <% if user_signed_in? %>
+              <li><%= link_to "Log Off", destroy_user_session_path, method: :get %></li>
+              <li><%= link_to "My Account", user_path(current_user) %></li>
+            <% else %>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <li><%= link_to "Log In", new_user_session_path %></li>
+            <% end %>
+            <li class = "form-inline">
               <%= form_tag(recipes_path, method: "get", id: "search") do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+                <li id="right"><%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %></li>
                 <%= submit_tag "Search", name: nil %>
               <% end %>
-            </div>
-          </li>
-          <li>
-            <div class="admin">
-              <% if current_user.try(:admin?) %>
-                <%= link_to "View All Users", users_path %>
-              <% end %>
-            </div>
-          </li>
-        </ul>
-      </section>
+            </li>
+            <% if current_user.try(:admin?) %>
+              <li><%= link_to "View All Users", users_path %></li>
+            <% end %>
+          </div>
+        </li>
+      </ul>
     </nav>
-    </div>
   </header>
-<%= yield %>
+  <div id="container-body">
+    <%= yield %>
   </div>
+</div>
 </body>
 </html>

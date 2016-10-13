@@ -1,35 +1,44 @@
 <div class="recipe-body">
-  <h2 class="recipe-title small-12 columns"><%= @recipe.title %></h2>
-  <div class="edit-delete-recipe">
-    <% if @user == current_user %>
-      <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
-    <% end %>
-    <br>
-    <% if @user == current_user || current_user.try(:admin?) %>
-      <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
-    <% end %>
-  </div>
-  <div class="creator-name">
-    <img id="recipe_image" src=<%= @recipe.avatar %>  />
-    <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
-    <%= link_to full_name, user_path(@recipe.user.id) %>
+  <img class = "small-3 columns" id="recipe_image" src=<%= @recipe.avatar %>  />
+  <h2 class="recipe-title small-9 columns"><%= @recipe.title %></h2>
+  <div class="row">
+    <div class="small-3 columns">
+    </div>
+    <div class="creator-name small-9 columns">
+      <% full_name = @recipe.user.first_name + ' ' + @recipe.user.last_name %>
+      <%= link_to full_name, user_path(@recipe.user.id) %>
+    </div>
   </div>
   <br>
-
-  <div class="description">
-    <%= @recipe.description %>
+  <div class="row">
+    <div class="edit-delete-recipe small-3 columns">
+      <% if @user == current_user %>
+        <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+      <% end %>
+      <br>
+      <% if @user == current_user || current_user.try(:admin?) %>
+        <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+      <% end %>
+    </div>
+    <div class="small-9 columns">
+      <div class="description">
+        <%= @recipe.description %>
+      </div>
+    </div>
   </div>
 
   <br>
-  <div class="ingredients small-6 columns">
-    <h5>Ingredients</h5> <br>
-    <p><%= @recipe.ingredients %></p>
-  </div>
+  <div class="i row">
+    <div class="ingredients small-6 columns">
+      <h5>Ingredients</h5> <br>
+      <p><%= @recipe.ingredients %></p>
+    </div>
 
-  <div class="instructions small-6 columns">
-    <h5>Instructions</h5> <br>
-    <p><%= @recipe.instructions %></p>
-    <br>
+    <div class="instructions small-6 columns">
+      <h5>Instructions</h5> <br>
+      <p><%= @recipe.instructions %></p>
+      <br>
+    </div>
   </div>
 
 </div>
@@ -43,15 +52,33 @@
 
   <% @reviews.each do |r| %>
     <div class="review">
-      <div class="name">
-        <%= r.user.first_name %> <%= r.user.last_name %>
+      <div class="row">
+        <div class="name small-3 columns">
+          <%= r.user.first_name %> <%= r.user.last_name %>
+        </div>
+        <div class="edit-delete-review small-3 columns">
+          <% if r.user == current_user %>
+            <%= link_to "Edit Review", edit_review_path(r) %> <br>
+            <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+          <% end %>
+        </div>
       </div>
-      <div class="rating">
+
+      <div class="row">
+        <div class="rating small-3 columns">
+          Rating: <%= r.rating %>
+        </div>
+        <div class="body small-9 columns">
+          <%= r.body %>
+        </div>
+      </div>
+
+      <!-- <div class="rating">
         <%= r.rating %>
       </div>
       <div class="body">
         <%= r.body %>
-      </div>
+      </div> -->
 
       <% total = 0 %>
       <% r.votes.each do |vote| %>
@@ -64,12 +91,6 @@
         <%= button_to 'downvote', downvote_review_path(r), method: :post %>
       </div>
 
-      <div class="edit-delete-review">
-        <% if r.user == current_user %>
-          <%= link_to "Edit Review", edit_review_path(r) %> <br>
-          <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
-        <% end %>
-      </div>
     </div>
     <br>
   <% end %>
