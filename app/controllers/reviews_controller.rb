@@ -37,9 +37,6 @@ class ReviewsController < ApplicationController
         flash[:notice] = @review.errors.full_messages.join(', ')
         render 'edit'
       end
-    else
-      flash[:notice] = 'You are not authorized to edit this review'
-      redirect_to @review.recipe
     end
   end
 
@@ -50,9 +47,6 @@ class ReviewsController < ApplicationController
       review.destroy
       flash[:notice] = 'Review successfully deleted'
       redirect_to recipe
-    else
-      flash[:notice] = 'You are not authorized to edit this review'
-      redirect_to @review.recipe
     end
   end
 
