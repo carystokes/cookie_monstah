@@ -43,7 +43,7 @@
 
 </div>
 
-<div class="reviews-body">
+<div class="reviews-body row">
   <h3>Reviews:</h3>
 
   <% if @reviews.empty? %>
@@ -51,60 +51,55 @@
   <% end %>
 
   <% @reviews.each do |r| %>
-    <div class="review">
-      <div class="row">
-        <div class="name small-3 columns">
-          <%= r.user.first_name %> <%= r.user.last_name %>
+    <div class="review-and-vote row">
+      <div class="review small-9 columns">
+        <div class="row">
+          <div class="name small-3 columns">
+            <%= r.user.first_name %> <%= r.user.last_name %>
+          </div>
+          <div class="edit-delete-review small-3 columns">
+            <% if r.user == current_user %>
+              <%= link_to "Edit Review", edit_review_path(r) %> <br>
+              <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+            <% end %>
+          </div>
         </div>
-        <div class="edit-delete-review small-3 columns">
-          <% if r.user == current_user %>
-            <%= link_to "Edit Review", edit_review_path(r) %> <br>
-            <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
-          <% end %>
+
+        <div class="row">
+          <div class="rating small-3 columns">
+            Rating: <%= r.rating %>
+          </div>
+          <div class="body small-9 columns">
+            <%= r.body %>
+          </div>
         </div>
       </div>
+      <div class="vote small-3 columns">
+        <% total = 0 %>
+        <% r.votes.each do |vote| %>
+          <% total += vote.value %>
+        <% end %>
 
-      <div class="row">
-        <div class="rating small-3 columns">
-          Rating: <%= r.rating %>
+        <div class="voting">
+          <%= button_to 'upvote', upvote_review_path(r), method: :post %>
+          <%= total %>
+          <%= button_to 'downvote', downvote_review_path(r), method: :post %>
         </div>
-        <div class="body small-9 columns">
-          <%= r.body %>
-        </div>
       </div>
-
-      <!-- <div class="rating">
-        <%= r.rating %>
-      </div>
-      <div class="body">
-        <%= r.body %>
-      </div> -->
-
-      <% total = 0 %>
-      <% r.votes.each do |vote| %>
-        <% total += vote.value %>
-      <% end %>
-
-      <div class="voting">
-        <%= button_to 'upvote', upvote_review_path(r), method: :post %>
-        <%= total %>
-        <%= button_to 'downvote', downvote_review_path(r), method: :post %>
-      </div>
-
+      <br>
     </div>
-    <br>
   <% end %>
+</div>
 
 <div class="add-review">
   <h3>Add a Review!</h3>
   <%= form_for [@recipe, @review] do |f| %>
   <%= f.label :rating %>
   <%= f.text_field :rating %>
-  <br>
+
   <%= f.label :body %>
   <%= f.text_area :body %>
-  <br>
+
   <%= f.submit "Add a Review" %>
   <% end %>
-</div>
 </div>
