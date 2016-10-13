@@ -58,20 +58,30 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-
-    if @recipe.update_attributes(recipe_params)
-      flash[:notice] = "Recipe edited successfully"
-      redirect_to @recipe
+    if @recipe.user == current_user
+      if @recipe.update_attributes(recipe_params)
+        flash[:notice] = "Recipe edited successfully"
+        redirect_to @recipe
+      else
+        flash[:notice] = @recipe.errors.full_messages.join(', ')
+        render 'edit'
+      end
     else
-      flash[:notice] = @recipe.errors.full_messages.join(', ')
-      render 'edit'
+      flash[:notice] = 'You do not have permission to edit this recipe'
+      redirect_to @recipe
     end
   end
 
   def destroy
-    Recipe.find(params[:id]).destroy
-    flash[:success] = "Recipe deleted"
-    redirect_to root_path
+    recipe = Recipe.find(params[:id])
+    if recipe.user == current_user || current_user.admin
+      recipe.destroy
+      flash[:success] = "Recipe deleted"
+      redirect_to root_path
+    else
+      flash[:notice] = 'You do not have permission to delete this recipe'
+      redirect_to @recipe
+    end
   end
 
   private

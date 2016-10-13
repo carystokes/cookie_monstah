@@ -15,8 +15,7 @@ class ReviewsController < ApplicationController
         redirect_to recipe_path(@recipe)
       end
     else
-      flash[:notice] = 'Please sign in'
-      redirect_to new_user_session_path
+      sign_in
     end
   end
 
@@ -26,21 +25,28 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-
-    if @review.update_attributes(review_params)
-      flash[:notice] = 'Review successfully edited'
-      redirect_to @review.recipe
+    if @review.user == current_user
+      if @review.update_attributes(review_params)
+        flash[:notice] = 'Review successfully edited'
+        redirect_to @review.recipe
+      else
+        flash[:notice] = @review.errors.full_messages.join(', ')
+        render 'edit'
+      end
     else
-      flash[:notice] = @review.errors.full_messages.join(', ')
-      render 'edit'
+      sign_in
     end
   end
 
   def destroy
     review = Review.find(params[:id])
     recipe = review.recipe
-    review.destroy
-    flash[:success] = 'Review successfully deleted'
+    if review.user == current_user
+      review.destroy
+      flash[:notice] = 'Review successfully deleted'
+    else
+      sign_in
+    end
     redirect_to recipe
   end
 
