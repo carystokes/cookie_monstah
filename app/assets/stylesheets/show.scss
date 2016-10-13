@@ -94,3 +94,19 @@
   padding: 10px;
   padding-left: 20px;
 }
+
+.add-review-class {
+  color: $black;
+}
+
+#rating-label label {
+  color: $white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#body-label label {
+  color: $white;
+  font-weight: bold;
+  font-size: 1.2em;
+}

@@ -93,13 +93,20 @@
 
 <div class="add-review">
   <h3>Add a Review!</h3>
-  <%= form_for [@recipe, @review] do |f| %>
-  <%= f.label :rating %>
-  <%= f.text_field :rating %>
+  <%= form_for [@recipe, @review], html: { class: "add-review-class" } do |f| %>
+  <div class="new-review-body row">
+    <div id= "rating-label" class="small-12 columns">
+      <%= f.label :rating %>
+      <%= f.text_field :rating %>
+    </div>
+    <div id= "body-label" class="small-12 columns">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </div>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-
-  <%= f.submit "Add a Review" %>
-  <% end %>
+    <div class="small-12 columns">
+      <%= f.submit "Add a Review" %>
+      <% end %>
+    </div>
+  </div>
 </div>
