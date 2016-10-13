@@ -12,6 +12,12 @@ feature 'User creates recipe' do
       expect(current_path).to eq(new_recipe_path)
     end
 
+    scenario 'I cannot create a new recipe if I am not logged in' do
+      visit new_recipe_path
+
+      expect(page).to have_content('Please sign in')
+    end
+
     scenario 'I must provide a title, ingredients, and instructions to create the recipe' do
       user_sign_in(user)
       visit new_recipe_path

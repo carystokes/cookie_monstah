@@ -35,7 +35,6 @@ feature 'user page' do
     user_sign_in(user)
     visit user_path(user)
 
-    expect(page).to have_content('Edit')
     click_link 'Edit'
 
     fill_in 'First name', with: 'Carl'
@@ -50,8 +49,15 @@ feature 'user page' do
       'spec/fixtures/Cookie-Monster-Cookies.jpg')
     click_button 'Save Changes'
 
-    page.find('#profile_image')['src'].should have_content
-      'Cookie-Monster-Cookies.jpg'
+    expect(page).to have_content('User edited successfully')
+  end
+
+  scenario 'a logged in user must provide valid information' do
+    user_sign_in(user)
+    visit edit_user_path(user)
+    fill_in 'First name', with: ''
+    click_button 'Save Changes'
+    expect(page).to have_content('First name can\'t be blank')
   end
 
   scenario 'a logged in user can delete their account :(' do

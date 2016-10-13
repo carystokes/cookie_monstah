@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:admin]
       if current_user.admin
-        @user.update_attribute(:admin, true)
+        @user.update_attribute(:admin, params[:admin])
         flash[:notice] = 'User is now an admin'
         redirect_to @user
       end

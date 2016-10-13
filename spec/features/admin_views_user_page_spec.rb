@@ -36,5 +36,14 @@ feature 'admin views user page do' do
 
       expect(user.reload.admin).to be(true)
     end
+
+    scenario 'admin can take away admin power' do
+      user_sign_in(user2)
+      visit user_path(user)
+      click_button 'Create Admin'
+      click_button 'Remove Admin'
+
+      expect(user.reload.admin).to be(false)
+    end
   end
 end
