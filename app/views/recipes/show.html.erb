@@ -1,5 +1,5 @@
 <div class="recipe-body">
-  <h2><%= @recipe.title %></h2>
+  <h2 class="recipe-title small-12 columns"><%= @recipe.title %></h2>
   <div class="edit-delete-recipe">
     <% if @user == current_user %>
       <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
@@ -21,12 +21,12 @@
   </div>
 
   <br>
-  <div class="ingredients">
+  <div class="ingredients small-6 columns">
     <h5>Ingredients</h5> <br>
     <p><%= @recipe.ingredients %></p>
   </div>
 
-  <div class="instructions">
+  <div class="instructions small-6 columns">
     <h5>Instructions</h5> <br>
     <p><%= @recipe.instructions %></p>
     <br>

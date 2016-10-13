@@ -7,16 +7,11 @@
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="container">
+<body id="body">
+  <div id="container-body">
   <header>
-    <div class="website-title">
-      <h1><%= link_to "Cookie Monster's Recipes", recipes_path %></h1>
-      <% if current_user.try(:admin?) %>
-        <%= link_to "View All Users", users_path %>
-      <% end %>
-    </div>
 
     <% flash.each do |key, value| %>
     <div class="flash">
@@ -24,21 +19,44 @@
     </div>
     <% end %>
 
-    <div class="sign-in">
-      <% if user_signed_in? %>
-        <%= link_to "Log Off", destroy_user_session_path, method: :get %><br>
-        <%= link_to "My Account", user_path(current_user) %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_registration_path %><br>
-        <%= link_to "Log In", new_user_session_path %>
-      <% end %>
+    <nav id = "top-bar" data-topbar role="navigation">
+      <ul class = "title-area">
+        <li class = "website-title">
+          <h1 id="web-title"><%= link_to "Cookie Monster's Recipes", recipes_path %></h1>
+        </li>
+      </ul>
 
-      <div class="search">
-        <%= form_tag(recipes_path, method: "get", id: "search") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
-          <%= submit_tag "Search", name: nil %>
-        <% end %>
-      </div>
+      <section class = "top-bar-section">
+        <ul class = "left">
+          <li>
+            <div class="sign-in">
+              <% if user_signed_in? %>
+                <%= link_to "Log Off", destroy_user_session_path, method: :get %><br>
+                <%= link_to "My Account", user_path(current_user) %>
+              <% else %>
+                <%= link_to "Sign Up", new_user_registration_path %><br>
+                <%= link_to "Log In", new_user_session_path %>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <div class="search">
+              <%= form_tag(recipes_path, method: "get", id: "search") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+                <%= submit_tag "Search", name: nil %>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <div class="admin">
+              <% if current_user.try(:admin?) %>
+                <%= link_to "View All Users", users_path %>
+              <% end %>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </nav>
     </div>
   </header>
 <%= yield %>

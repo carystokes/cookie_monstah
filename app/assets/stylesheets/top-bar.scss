@@ -1,0 +1,48 @@
+#top-bar {
+  background-color: $pink;
+}
+
+.top-bar-section {
+  display: inline-block;
+}
+
+.title-area {
+  list-style: none;
+  background-color: $pink;
+}
+
+.left {
+  list-style: none;
+}
+
+h1 {
+  color: $white;
+  font-family: Lobster;
+  padding: 1rem;
+  text-align: center;
+
+  :link {
+    color: $white;
+  }
+
+  :visited {
+    color: $white;
+  }
+};
+
+#web-title {
+  font-family: Lobster;
+}
+//
+// .sign-in {
+//   background-color: $light-grey;
+//   border: $medium-grey solid 2px;
+//   float: center;
+//   font-family: Quattrocento;
+//   padding: 1rem;
+//   text-align: right;
+//
+//   .search {
+//     text-align: left;
+//   }
+// };
