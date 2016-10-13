@@ -1,8 +1,17 @@
 <div class="recipe-index">
   <% @recipes.each do |recipe| %>
-  <div class="recipe-teaser">
-    <h2><%= link_to recipe.title, recipe %></h2>
-    <%= link_to recipe.description, recipe %>
+  <div class="recipe-teaser row">
+    <div class="small-6 columns">
+      <h2><%= link_to recipe.title, recipe %></h2>
+        <%= link_to recipe.description, recipe %>
+    </div>
+    <div class="small-6 columns">
+      <% if recipe.avatar.present?  %>
+         <%= image_tag recipe.avatar, class: "small-6 columns", id: "recipe_image" %>
+      <% else %>
+         <%= image_tag 'cookie_default.jpg', class: "small-6 columns", id: "recipe_image" %>
+      <% end %>
+    </div>
   </div>
   <% end %>
 </div>

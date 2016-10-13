@@ -1,0 +1,33 @@
+#top-bar {
+  background-color: $pink;
+  margin-bottom: 20px;
+}
+
+#search {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+h1 {
+  color: $white;
+  font-family: Lobster;
+  padding: 1rem;
+  text-align: center;
+
+  :link {
+    color: $white;
+  }
+
+  :visited {
+    color: $white;
+  }
+};
+
+#web-title {
+  font-family: Lobster;
+}
+
+.sign-in {
+  font-family: Quattrocento;
+};

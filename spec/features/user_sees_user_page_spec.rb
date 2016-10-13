@@ -35,6 +35,7 @@ feature 'user page' do
     user_sign_in(user)
     visit user_path(user)
 
+    expect(page).to have_content('Your Recipes')
     click_button 'Edit'
 
     fill_in 'First name', with: 'Carl'
@@ -51,6 +52,19 @@ feature 'user page' do
     fill_in 'First name', with: ''
     click_button 'Save Changes'
     expect(page).to have_content('First name can\'t be blank')
+
+  end
+
+  scenario 'a logged in user can upload a userpic' do
+    user_sign_in(user)
+    visit edit_user_path(user)
+
+    page.attach_file('Avatar', Rails.root +
+      'spec/fixtures/Cookie-Monster-Cookies.jpg')
+    click_button 'Save Changes'
+
+    page.find('#profile-image')['src'].should have_content
+      'http://localhost:3000/assets/user_default-fb30695f64112fae9bb8b64e5fc0ee18577f6c0ff7103e757339eafdb6c9933d.gif'
   end
 
   scenario 'a logged in user can delete their account :(' do

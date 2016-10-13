@@ -9,10 +9,10 @@ class ReviewsController < ApplicationController
       if @review.save
         flash[:notice] = 'Review created successfully'
         ReviewMailer.new_review(@review).deliver_later
-        redirect_to recipe_path(@recipe)
+        redirect_to @recipe
       else
         flash[:notice] = @review.errors.full_messages.join(', ')
-        redirect_to recipe_path(@recipe)
+        redirect_to @recipe
       end
     else
       sign_in

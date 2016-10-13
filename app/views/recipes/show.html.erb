@@ -1,43 +1,54 @@
 <div class="recipe-body">
-  <h2><%= @recipe.title %></h2>
-  <div class="edit-delete-recipe">
-    <% if @user == current_user %>
-      <%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %>
-    <% end %>
-    <br>
-    <% if @user == current_user || current_user.try(:admin?) %>
-      <%= button_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
-    <% end %>
-  </div>
-  <div class="creator-name">
-    <% if @recipe.avatar.present?  %>
-       <%= image_tag @recipe.avatar, id: "recipe_image" %>
-    <% else %>
-       <%= image_tag 'cookie_default.jpg', id: "recipe_image" %>
-    <% end %>
-    <%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
+
+<% if @recipe.avatar.present?  %>
+   <%= image_tag @recipe.avatar, class: "small-3 columns", id: "recipe_image" %>
+<% else %>
+   <%= image_tag 'cookie_default.jpg', class: "small-3 columns", id: "recipe_image" %>
+<% end %>
+
+  <h2 class="recipe-title small-9 columns"><%= @recipe.title %></h2>
+  <div class="row">
+    <div class="small-3 columns">
+    </div>
+    <div class="creator-name small-9 columns">
+      <%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
+    </div>
   </div>
   <br>
-
-  <div class="description">
-    <%= @recipe.description %>
+  <div class="row">
+    <div class="edit-delete-recipe small-3 columns">
+      <% if @user == current_user %>
+        <%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %>
+      <% end %>
+      <br>
+      <% if @user == current_user || current_user.try(:admin?) %>
+        <%= button_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+      <% end %>
+    </div>
+    <div class="small-9 columns">
+      <div class="description">
+        <%= @recipe.description %>
+      </div>
+    </div>
   </div>
 
   <br>
-  <div class="ingredients">
-    <h5>Ingredients</h5> <br>
-    <p><%= @recipe.ingredients %></p>
-  </div>
+  <div class="i row">
+    <div class="ingredients small-6 columns">
+      <h5>Ingredients</h5> <br>
+      <p><%= @recipe.ingredients %></p>
+    </div>
 
-  <div class="instructions">
-    <h5>Instructions</h5> <br>
-    <p><%= @recipe.instructions %></p>
-    <br>
+    <div class="instructions small-6 columns">
+      <h5>Instructions</h5> <br>
+      <p><%= @recipe.instructions %></p>
+      <br>
+    </div>
   </div>
 
 </div>
 
-<div class="reviews-body">
+<div class="reviews-body row">
   <h3>Reviews:</h3>
 
   <% if @reviews.empty? %>
@@ -45,48 +56,63 @@
   <% end %>
 
   <% @reviews.each do |r| %>
-    <div class="review">
-      <div class="name">
-        <%= r.user.first_name %> <%= r.user.last_name %>
-      </div>
-      <div class="rating">
-        <%= r.rating %>
-      </div>
-      <div class="body">
-        <%= r.body %>
+    <div class="review-and-vote row">
+      <div class="review small-9 columns">
+        <div class="row">
+          <div class="name small-3 columns">
+            <%= r.user.first_name %> <%= r.user.last_name %>
+          </div>
+          <div class="edit-delete-review small-3 columns">
+            <% if r.user == current_user %>
+                <%= button_to "Edit Review", edit_review_path(r), method: :get %> <br>
+                <%= button_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+              <% end %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="rating small-3 columns">
+            Rating: <%= r.rating %>
+          </div>
+          <div class="body small-9 columns">
+            <%= r.body %>
+          </div>
+        </div>
       </div>
 
-      <% total = 0 %>
-      <% r.votes.each do |vote| %>
-        <% total += vote.value %>
-      <% end %>
-
-      <div class="voting">
-        <%= button_to 'upvote', upvote_review_path(r), method: :post %>
-        <%= total %>
-        <%= button_to 'downvote', downvote_review_path(r), method: :post %>
-      </div>
-
-      <div class="edit-delete-review">
-        <% if r.user == current_user %>
-          <%= button_to "Edit Review", edit_review_path(r), method: :get %> <br>
-          <%= button_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+      <div class="vote small-3 columns">
+        <% total = 0 %>
+        <% r.votes.each do |vote| %>
+          <% total += vote.value %>
         <% end %>
+
+        <div class="voting">
+          <%= button_to 'upvote', upvote_review_path(r), method: :post %>
+          <%= total %>
+          <%= button_to 'downvote', downvote_review_path(r), method: :post %>
+        </div>
       </div>
+      <br>
     </div>
-    <br>
   <% end %>
+</div>
 
 <div class="add-review">
   <h3>Add a Review!</h3>
-  <%= form_for [@recipe, @review] do |f| %>
-  <%= f.label :rating %>
-  <%= f.text_field :rating %>
-  <br>
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-  <br>
-  <%= f.submit "Add a Review" %>
-  <% end %>
-</div>
+  <%= form_for [@recipe, @review], html: { class: "add-review-class" } do |f| %>
+  <div class="new-review-body row">
+    <div id= "rating-label" class="small-12 columns">
+      <%= f.label :rating %>
+      <%= f.text_field :rating %>
+    </div>
+    <div id= "body-label" class="small-12 columns">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="small-12 columns">
+      <%= f.submit "Add a Review" %>
+      <% end %>
+    </div>
+  </div>
 </div>
