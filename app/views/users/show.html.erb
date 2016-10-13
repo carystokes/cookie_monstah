@@ -29,8 +29,11 @@
 
 </div>
 <div class="user-recipes">
-  <h1>Your Recipes</h1>
-
+  <% if @user == current_user %>
+    <h1>Your Recipes</h1>
+  <% else %>
+    <h1> <%= @user.first_name %>'s Recipes </h1>
+  <% end %>
   <ul>
     <% @recipes.each do |recipe| %>
        <li><%= link_to recipe.title, recipe %></li>
