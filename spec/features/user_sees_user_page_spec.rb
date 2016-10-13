@@ -51,8 +51,8 @@ feature 'user page' do
     visit edit_user_path(user)
     fill_in 'First name', with: ''
     click_button 'Save Changes'
+    
     expect(page).to have_content('First name can\'t be blank')
-
   end
 
   scenario 'a logged in user can upload a userpic' do
