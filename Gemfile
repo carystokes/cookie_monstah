@@ -14,6 +14,7 @@ gem 'fog'
 gem 'sendgrid-ruby'
 gem 'heroku'
 gem 'fog-aws'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'mailcatcher'
@@ -32,6 +33,7 @@ group :test do
   gem 'launchy', require: false
   gem 'coveralls', require: false
   gem 'database_cleaner'
+  gem 'capybara-webkit'
 end
 
 group :production do
