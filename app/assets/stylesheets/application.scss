@@ -3,11 +3,16 @@
 @import "./show";
 @import "./index";
 @import "./new";
+@import './top-bar';
+@import './user_show';
+@import './edit';
 
-body {
+#body {
   background-color: $pink;
   font-family: Arial;
+}
 
+body {
   :link {
     color: $black;
     text-decoration: none;
@@ -16,6 +21,10 @@ body {
   :visited {
     color: $black;
     text-decoration: none;
+  }
+
+  a:hover {
+    color: $medium-grey;
   }
 }
 
@@ -38,4 +47,10 @@ body {
   font-size: 1rem;
   font-weight: bold;
   padding: 1rem;
+}
+
+#container-body {
+  background-color: $pink;
+  width: 80%;
+  margin: auto;
 }
