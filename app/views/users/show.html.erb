@@ -1,42 +1,42 @@
 <div class="user-show-page">
   <h1><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
-
-<div class="information row">
-  <div class="image small-6 columns">
-    <% if @user.avatar.present?  %>
-       <%= image_tag @user.avatar, id: "profile-image" %>
-    <% else %>
-       <%= image_tag 'user_default.gif', id: "profile-image" %>
-    <% end %>
-  </div>
-  <div class="user small-6 columns">
-    <h3>First name: <%= @user.first_name %></h3>
-    <h3>Last name: <%= @user.last_name %></h3>
-    <h3>Email: <%= @user.email %></h3>
-    <div class="edit-and-delete row">
-      <% if current_user.try(:admin?) %>
-         <%= button_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
-         <% if @user.admin %>
-            <%= button_to "Remove Admin", @user, method: :patch, params: { admin: false } %>
-         <% else %>
-            <%= button_to "Create Admin", @user, method: :patch, params: { admin: true } %>
-         <% end %>
+  <div class="information row">
+    <div class="image small-6 columns">
+      <% if @user.avatar.present?  %>
+         <%= image_tag @user.avatar, id: "profile-image" %>
+      <% else %>
+         <%= image_tag 'user_default.gif', id: "profile-image" %>
       <% end %>
     </div>
-  </div>
+    <div class="user small-6 columns">
+      <h3>First name: <%= @user.first_name %></h3>
+      <h3>Last name: <%= @user.last_name %></h3>
+      <h3>Email: <%= @user.email %></h3>
+      <div class="edit-and-delete row">
+        <% if @user == current_user %>
+          <%= button_to 'Edit', edit_user_path(@user), method: :get %>
+        <% end %>
+        <% if @user == current_user || current_user.try(:admin?) %>
+          <%= button_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
+        <% end %>
+        <% if current_user.try(:admin?) %>
+           <% if @user.admin %>
+              <%= button_to "Remove Admin", @user, method: :patch, params: { admin: false } %>
+           <% else %>
+              <%= button_to "Create Admin", @user, method: :patch, params: { admin: true } %>
+           <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>  
 </div>
-<% if @user == current_user %>
-   <%= button_to 'Edit', edit_user_path(@user), method: :get %>
-   <%= button_to 'Delete', @user, method: :delete, data: { confirm: 'You sure?' }  %>
-<% end %>
-</div>
+
 <div class="user-recipes">
   <% if @user == current_user %>
     <h1>Your Recipes</h1>
   <% else %>
     <h1> <%= @user.first_name %>'s Recipes </h1>
   <% end %>
-
   <ul>
     <% @recipes.each do |recipe| %>
        <li><%= link_to recipe.title, recipe %></li>
