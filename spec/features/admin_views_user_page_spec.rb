@@ -9,7 +9,7 @@ feature 'admin views user page do' do
     scenario 'admin can delete a user\'s account' do
       user_sign_in(user2)
       visit user_path(user)
-      click_link 'Delete'
+      click_button 'Delete'
 
       expect(page).to have_content('User deleted')
       expect(page).not_to have_content('John Smith')

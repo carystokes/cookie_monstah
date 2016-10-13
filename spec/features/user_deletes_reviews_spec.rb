@@ -11,7 +11,7 @@ feature 'user can delete reviews' do
     scenario 'I can delete my own reviews' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_link 'Delete Review'
+      click_button 'Delete Review'
 
       expect(page).to have_content('Review successfully deleted')
       expect(page).not_to have_content('I LOVE COOKIE SOUP!!!')

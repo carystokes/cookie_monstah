@@ -2,11 +2,11 @@
   <h2><%= @recipe.title %></h2>
   <div class="edit-delete-recipe">
     <% if @user == current_user %>
-      <%= link_to "Edit Recipe", edit_recipe_path(@recipe) %>
+      <%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %>
     <% end %>
     <br>
     <% if @user == current_user || current_user.try(:admin?) %>
-      <%= link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
+      <%= button_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "You sure?" }  %>
     <% end %>
   </div>
   <div class="creator-name">
@@ -15,8 +15,7 @@
     <% else %>
        <%= image_tag 'cookie_default.jpg', id: "recipe_image" %>
     <% end %>
-    <% full_name = "#{@recipe.user.first_name  @recipe.user.last_name}" %>
-    <%= link_to full_name, user_path(@recipe.user.id) %>
+    <%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
   </div>
   <br>
 
@@ -70,8 +69,8 @@
 
       <div class="edit-delete-review">
         <% if r.user == current_user %>
-          <%= link_to "Edit Review", edit_review_path(r) %> <br>
-          <%= link_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
+          <%= button_to "Edit Review", edit_review_path(r), method: :get %> <br>
+          <%= button_to "Delete Review", r, method: :delete, data: { confirm: "You Sure?" } %>
         <% end %>
       </div>
     </div>

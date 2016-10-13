@@ -35,21 +35,14 @@ feature 'user page' do
     user_sign_in(user)
     visit user_path(user)
 
-    click_link 'Edit'
+    click_button 'Edit'
 
     fill_in 'First name', with: 'Carl'
     click_button 'Save Changes'
 
+    expect(page).to have_content('User edited successfully')
     expect(page).to have_content('Carl Smith')
     expect(page).not_to have_content('Jon')
-
-    click_link 'Edit'
-
-    page.attach_file('Avatar', Rails.root +
-      'spec/fixtures/Cookie-Monster-Cookies.jpg')
-    click_button 'Save Changes'
-
-    expect(page).to have_content('User edited successfully')
   end
 
   scenario 'a logged in user must provide valid information' do
@@ -63,7 +56,7 @@ feature 'user page' do
   scenario 'a logged in user can delete their account :(' do
     user_sign_in(user)
     visit user_path(user)
-    click_link 'Delete'
+    click_button 'Delete'
 
     expect(page).to have_content('User deleted')
     expect(page).to have_content('Log In')

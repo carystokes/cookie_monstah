@@ -11,7 +11,7 @@ feature 'user can edit reviews' do
     scenario 'I can edit my own reviews' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_link 'Edit Review'
+      click_button 'Edit Review'
       fill_in 'Rating', with: 2
       fill_in 'Body', with: 'I\'m over cookie soup now'
       click_button 'Save Review'
@@ -31,7 +31,7 @@ feature 'user can edit reviews' do
     scenario 'I cannot edit the rating to be an integer not between 1 and 5' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_link 'Edit Review'
+      click_button 'Edit Review'
 
       fill_in 'Rating', with: 27
       fill_in 'Body', with: 'THIS IS THE BEST COOKIE SOUP EVER!!!!!'
@@ -44,7 +44,7 @@ feature 'user can edit reviews' do
     scenario 'I expect an error if I put a rating that is not an integer' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_link 'Edit Review'
+      click_button 'Edit Review'
 
       fill_in 'Rating', with: 3.7
 
@@ -56,7 +56,7 @@ feature 'user can edit reviews' do
     scenario 'I expect an error if I remove the rating' do
       user_sign_in(user)
       visit recipe_path(recipe)
-      click_link 'Edit Review'
+      click_button 'Edit Review'
 
       fill_in 'Rating', with: ''
       fill_in 'Body', with: 'I don\'t like numbers I\'d rather\

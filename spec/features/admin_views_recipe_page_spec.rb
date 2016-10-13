@@ -9,7 +9,7 @@ feature 'admin views all users do' do
     scenario 'an admin can delete recipes' do
       user_sign_in(user2)
       visit recipe_path(recipe)
-      click_link 'Delete Recipe'
+      click_button 'Delete Recipe'
 
       expect(page).not_to have_content(recipe.title)
       expect(page).to have_content 'Recipe deleted'
@@ -19,7 +19,7 @@ feature 'admin views all users do' do
       user_sign_in(user2)
       visit recipe_path(recipe)
 
-      expect(page).not_to have_link 'Edit Recipe'
+      expect(page).not_to have_button 'Edit Recipe'
     end
 
     scenario 'an admin cannot edit recipes' do
