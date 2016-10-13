@@ -1,15 +1,16 @@
-<%= form_for @recipe do |f| %>
-  <%= f.text_area :title, placeholder: "Title" %>
-  <br>
-  <%= f.text_area :ingredients, placeholder: "Ingredients" %>
-  <br>
-  <%= f.text_area :instructions, placeholder: "Instructions"%>
-  <br>
-  <%= f.text_area :description, placeholder: "Description" %>
-  <br>
-  <%= f.label :avatar, "Image", name: 'Choose File' %>
-  <%= f.file_field :avatar %>
-  <br>
-
-  <%= f.submit "Save Recipe" %>
+<%= form_for @recipe, html: { id: "edit-and-new-form" } do |f| %>
+  <%= f.text_area :title, placeholder: "Title", class: "edit-text-field", id: "edit-title"%>
+  <%= f.text_area :ingredients, placeholder: "Ingredients", class: "edit-text-field"%>
+  <%= f.text_area :instructions, placeholder: "Instructions", class: "edit-text-field"%>
+  <%= f.text_area :description, placeholder: "Description", class: "edit-text-field"%>
+  <div id="avatar-upload">
+    <% if @recipe.avatar.present?  %>
+       <%= image_tag @recipe.avatar, class: "recipe-image" %>
+    <% else %>
+       <%= image_tag 'cookie_default.jpg', class: "recipe-image" %>
+    <% end %>
+    <%= f.label :avatar, "Change Avatar File", name: 'Choose File' %>
+    <%= f.file_field :avatar %>
+  </div>
+  <%= f.submit "Save Recipe", id: "save-recipe" %>
 <% end %>
