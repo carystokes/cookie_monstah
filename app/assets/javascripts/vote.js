@@ -43,7 +43,7 @@ function upvoteButton() {
   request.done(function(data) {
      document.getElementById(`total${id}`).innerHTML = data.total;
    })
- };
+ }
 
  function downvoteButton() {
    event.preventDefault();
@@ -58,4 +58,4 @@ function upvoteButton() {
    request.done(function(data) {
       document.getElementById(`total${id}`).innerHTML = data.total;
     })
-  };
+  }
