@@ -9,7 +9,7 @@ function upvoteButton() {
   });
 
   request.done(function(data) {
-     document.getElementById(`total${id}`).innerHTML = data.total;
+     document.getElementById(`total${idd}`).innerHTML = data.total;
    })
  }
 
@@ -24,6 +24,6 @@ function upvoteButton() {
    });
 
    request.done(function(data) {
-      document.getElementById(`total${id}`).innerHTML = data.total;
+      document.getElementById(`total${idd}`).innerHTML = data.total;
     })
   }
