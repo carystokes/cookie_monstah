@@ -13,13 +13,13 @@ Mike Hawley
 Cary Stokes
 
 Link to deployed site:
-http://cookie-monstah-recipes.herokuapp.com
+http://cookie-monster-recipes.herokuapp.com
 
 Features:
 User roles authentication (Devise)
 Create, read, update and delete recipes and reviews (Rails, Ruby)
 Emails recipe owner when new review created (SendGrid)
 Avatar upload with cloud storage (CarrierWave, Fog and AWS)
-Upvote or downvote individual recipes 
+Upvote or downvote individual recipes (AJAX)
 Recipe search (pg_search)
 Unit and acceptance testing (Rspec and Capybara)
