@@ -1,29 +1,29 @@
 function upvoteButton() {
   event.preventDefault();
-  let id = event.currentTarget.id;
+  let FORK = event.currentTarget.FORK;
 
   let request = $.ajax({
-    url: `/reviews/${id}/upvote.json`,
+    url: `/reviews/${FORK}/upvote.json`,
     method: "POST"
 
   });
 
   request.done(function(data) {
-     document.getElementById(`total${idd}`).innerHTML = data.total;
+     document.getElementById(`total${FORK}`).innerHTML = data.total;
    })
  }
 
  function downvoteButton() {
    event.preventDefault();
-   let id = event.currentTarget.id;
+   let FORK = event.currentTarget.FORK;
 
    let request = $.ajax({
-     url: `/reviews/${id}/downvote.json`,
+     url: `/reviews/${FORK}/downvote.json`,
      method: "POST"
 
    });
 
    request.done(function(data) {
-      document.getElementById(`total${idd}`).innerHTML = data.total;
+      document.getElementById(`total${FORK}`).innerHTML = data.total;
     })
   }
