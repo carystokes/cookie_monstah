@@ -89,14 +89,13 @@
         <% end %>
 
         <div class="voting">
-          <!-- <%= button_to 'upvote', upvote_review_path(r), method: :post, class: 'upvote' %> -->
 
           <button type="button" name="button" onClick="upvoteButton()" id="<%=r.id%>">UPVOTE</button>
+
             <div id="total<%= r.id %>"><%= total %></div>
+
           <button type="button" name="button" onClick="downvoteButton()" id="<%=r.id%>">DOWNVOTE</button>
 
-          <!-- <%= total %> -->
-          <!-- <%= button_to 'downvote', downvote_review_path(r), method: :post, class: 'downvote' %> -->
         </div>
       </div>
       <br>

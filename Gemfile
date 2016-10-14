@@ -27,13 +27,13 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'dotenv-rails'
   gem 'email_spec'
+  gem 'capybara-webkit'
 end
 
 group :test do
   gem 'launchy', require: false
   gem 'coveralls', require: false
   gem 'database_cleaner'
-  gem 'capybara-webkit'
 end
 
 group :production do

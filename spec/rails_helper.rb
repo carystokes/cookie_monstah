@@ -10,6 +10,9 @@ require 'factory_girl_rails'
 require 'capybara/rails'
 require 'valid_attribute'
 require 'support/factory_girl'
+require 'capybara/rspec'
+require 'capybara/webkit/matchers'
+Capybara.javascript_driver = :webkit
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -66,10 +69,13 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    # DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
   end
 
   config.append_after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include(Capybara::Webkit::RspecMatchers, type: :feature)
 end

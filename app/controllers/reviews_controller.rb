@@ -81,7 +81,7 @@ class ReviewsController < ApplicationController
     @recipe = @review.recipe
 
     if user_signed_in?
-      @vote.value != -1 ? @vote.update(value: -1) : @vote.update(value: 0)
+      @vote.value != (-1) ? @vote.update(value: (-1)) : @vote.update(value: 0)
     else
       sign_in
     end
