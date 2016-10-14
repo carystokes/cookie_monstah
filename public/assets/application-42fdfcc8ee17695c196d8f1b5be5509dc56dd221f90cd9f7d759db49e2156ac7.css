@@ -1,0 +1,367 @@
+/* line 1, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.recipe-body {
+  background-color: #ffffff;
+  border: #000000 solid 2px;
+  padding: 1rem;
+}
+/* line 6, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.recipe-body .creator-name {
+  color: #696969;
+}
+/* line 10, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.recipe-body .description {
+  border-bottom: 1px solid #363535;
+  padding-bottom: 30px;
+}
+/* line 15, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.recipe-body h5 {
+  color: #363535;
+  font-family: Quattrocento;
+  font-size: 1.3rem;
+}
+/* line 21, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.recipe-body .edit-delete-recipe {
+  color: #000000;
+  font-family: Quattrocento;
+}
+/* line 27, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.recipe-body .instructions {
+  border-left: #d3d3d3 solid 4px;
+  float: right;
+}
+
+/* line 33, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.reviews-body {
+  background-color: #d3d3d3;
+  border: #000000 solid 2px;
+  padding: 1rem;
+}
+/* line 38, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.reviews-body h3 {
+  padding-bottom: 1rem;
+}
+
+/* line 43, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.review {
+  background-color: #ffffff;
+  border: #696969 solid 2px;
+  padding: 1rem;
+}
+/* line 48, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.review .rating {
+  font-family: Quattrocento;
+}
+/* line 52, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.review .name {
+  font-family: Quattrocento;
+}
+/* line 56, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.review .edit-delete-review {
+  color: #000000;
+  float: right;
+  font-family: Quattrocento;
+  font-size: 0.7rem;
+}
+
+/* line 64, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.i {
+  padding: 2rem;
+  background-color: #ffffe8;
+}
+
+/* line 69, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.add-review {
+  background-color: #363535;
+  color: #ffffff;
+  font-family: Quattrocento;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* line 77, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.button_to {
+  display: table;
+  margin: auto;
+}
+
+/* line 82, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.voting {
+  background-color: #ffffe8;
+  padding: 5px;
+  padding-top: 10px;
+  height: 92px;
+}
+
+/* line 89, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.vote {
+  text-align: center;
+}
+
+/* line 93, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.review-and-vote {
+  padding: 10px;
+  padding-left: 20px;
+}
+
+/* line 98, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.add-review-class {
+  color: #000000;
+}
+
+/* line 102, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+#rating-label label {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* line 108, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+#body-label label {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* line 114, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+.recipe-image {
+  height: 90px;
+  width: 90px;
+  margin-right: 40px;
+}
+
+/* line 120, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/show.scss */
+#save-recipe {
+  display: flex;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+/* line 1, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+h2 {
+  color: #363535;
+  font-family: Quattrocento;
+  font-size: 3rem;
+}
+/* line 6, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+h2 :link {
+  color: #363535;
+}
+/* line 10, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+h2 :visited {
+  color: #363535;
+}
+
+/* line 15, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+.recipe-index {
+  background-color: #ffffff;
+  border: #696969 solid 2px;
+  padding: 1rem;
+}
+/* line 20, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+.recipe-index h2 {
+  font-size: 2rem;
+}
+/* line 24, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+.recipe-index .recipe-teaser {
+  border-bottom: #d3d3d3 solid;
+  padding: 1rem;
+}
+
+/* line 30, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+.add-recipe {
+  background-color: #363535;
+  color: #ffffff;
+  font-family: Quattrocento;
+  font-size: 2rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+/* line 39, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+.add-recipe :link {
+  color: #ffffff;
+}
+/* line 43, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+.add-recipe :visited {
+  color: #ffffff;
+}
+
+/* line 48, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/index.scss */
+#recipe_image {
+  float: right;
+}
+
+/* line 1, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/new.scss */
+.new-recipe {
+  background-color: #ffffff;
+  border: 2px solid #696969;
+  font-family: Quattrocento;
+  text-align: center;
+}
+
+/* line 8, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/new.scss */
+.recipe-form {
+  display: block;
+  background-color: #ffffe8;
+  border: 2px solid black;
+  padding-top: 15px;
+}
+
+/* line 15, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/new.scss */
+.edit-text-field {
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+  height: 60px;
+}
+
+/* line 22, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/new.scss */
+#edit-title {
+  height: 20px;
+}
+
+/* line 26, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/new.scss */
+#avatar-upload {
+  display: flex;
+  margin: auto;
+  padding: 20px;
+  width: 70%;
+}
+
+/* line 1, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/top-bar.scss */
+#top-bar {
+  background-color: #f6c3ef;
+  margin-bottom: 20px;
+}
+
+/* line 6, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/top-bar.scss */
+#search {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+/* line 12, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/top-bar.scss */
+h1 {
+  color: #ffffff;
+  font-family: Lobster;
+  padding: 1rem;
+  text-align: center;
+}
+/* line 18, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/top-bar.scss */
+h1 :link {
+  color: #ffffff;
+}
+/* line 22, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/top-bar.scss */
+h1 :visited {
+  color: #ffffff;
+}
+
+/* line 27, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/top-bar.scss */
+#web-title {
+  font-family: Lobster;
+}
+
+/* line 31, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/top-bar.scss */
+.sign-in {
+  font-family: Quattrocento;
+}
+
+/* line 1, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.user-show-page {
+  background-color: #ffffff;
+  border: 2px solid black;
+  padding: 2rem;
+}
+/* line 6, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.user-show-page h1 {
+  font-family: Quattrocento;
+}
+
+/* line 11, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.edit-and-delete p {
+  margin-bottom: 1px;
+}
+/* line 14, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.edit-and-delete p .button_to {
+  display: inline-block;
+}
+/* line 18, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.edit-and-delete p a {
+  color: #696969;
+}
+
+/* line 25, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.user {
+  margin-top: 40px;
+}
+/* line 28, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.user h3 {
+  font-size: 20px;
+}
+
+/* line 33, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.user-recipes {
+  background-color: #ffffe8;
+  border: 2px solid black;
+  padding: 2rem;
+}
+/* line 38, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.user-recipes h1 {
+  font-family: Quattrocento;
+}
+/* line 42, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/user_show.scss */
+.user-recipes li {
+  list-style: none;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* line 10, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+#body {
+  background-color: #f6c3ef;
+  font-family: Arial;
+}
+
+/* line 16, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+body :link {
+  color: #000000;
+  text-decoration: none;
+}
+/* line 21, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+body :visited {
+  color: #000000;
+  text-decoration: none;
+}
+/* line 26, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+body a:hover {
+  color: #696969;
+}
+
+/* line 32, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+.website-title :link {
+  color: #ffffff;
+  text-decoration: none;
+}
+/* line 37, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+.website-title :visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* line 43, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+.flash {
+  background-color: #363535;
+  color: #ffffff;
+  font-family: Quattrocento;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+/* line 52, /Users/shanahausman/challenges/group-project-weeks/cookie_monstah/app/assets/stylesheets/application.scss */
+#container-body {
+  background-color: #f6c3ef;
+  width: 80%;
+  margin: auto;
+}
