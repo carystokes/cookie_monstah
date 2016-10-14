@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
   def show
     id = params[:id]
     @recipe = Recipe.find(id)
-    @reviews = @recipe.reviews
+    @reviews = @recipe.reviews.order(created_at: :desc)
     @review = Review.new
     @user = @recipe.user
   end

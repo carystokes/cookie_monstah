@@ -57,9 +57,21 @@ class ReviewsController < ApplicationController
 
     if user_signed_in?
       @vote.value != 1 ? @vote.update(value: 1) : @vote.update(value: 0)
-      redirect_to recipe_path(@recipe)
     else
       sign_in
+    end
+
+    @votes = @review.votes
+
+    @total = 0
+    @votes.each do |vote|
+      @total += vote.value
+    end
+
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.json {render :json => { total: @total } }
+      format.js
     end
   end
 
@@ -69,10 +81,22 @@ class ReviewsController < ApplicationController
     @recipe = @review.recipe
 
     if user_signed_in?
-      @vote.value != -1 ? @vote.update(value: -1) : @vote.update(value: 0)
-      redirect_to recipe_path(@recipe)
+      @vote.value != (-1) ? @vote.update(value: (-1)) : @vote.update(value: 0)
     else
       sign_in
+    end
+
+    @votes = @review.votes
+
+    @total = 0
+    @votes.each do |vote|
+      @total += vote.value
+    end
+
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.json {render :json => { total: @total } }
+      format.js
     end
   end
 

@@ -14,6 +14,7 @@ gem 'fog'
 gem 'sendgrid-ruby'
 gem 'heroku'
 gem 'fog-aws'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'mailcatcher'
@@ -26,6 +27,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'dotenv-rails'
   gem 'email_spec'
+  gem 'capybara-webkit'
 end
 
 group :test do
