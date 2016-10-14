@@ -2,8 +2,9 @@ function upvoteButton() {
   event.preventDefault();
   let forkup = event.currentTarget.id;
 
+  let url = "reviews/" + forkup + "/upvote.json";
   let request = $.ajax({
-    url: "reviews/" + forkup + "/upvote.json",
+    url: url,
     method: "POST"
 
   });
